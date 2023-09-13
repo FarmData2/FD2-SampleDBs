@@ -21,22 +21,33 @@ if [ ! -d "$HOME/FarmData2" ]; then
   exit 255
 fi
 
-# Pick the database to be installed
-AVAILABLE_DB=$(ls "$REPO_DIR/dist")
-if [ "$AVAILABLE_DB" == "" ]; then
-  echo -e "${RED}ERROR:${NO_COLOR} No db.X.tar.gz files found in dist."
-  echo -e "${RED}ERROR:${NO_COLOR} Build a database (e.g. base, sample) before installing."
-  exit 255
-fi
-echo "Choose the database to be installed."
-select DB in "${AVAILABLE_DB[@]}"; do
-  if (("$REPLY" <= 0 || "$REPLY" > "${#AVAILABLE_DB[@]}")); then
-    echo -e "${ON_RED}ERROR:${NO_COLOR} Invalid choice. Please try again."
+# Determine the database to be installed.
+if [ ! "$1" == "" ]; then
+  # DB was specified on the command line.
+  if [ ! -f "$REPO_DIR/dist/$1" ]; then
+    echo -e "${RED}ERROR:${NO_COLOR} The file $REPO_DIR/dist/$1 does not exist."
+    exit 255
   else
-    break
+    DB="$1"
   fi
-done
-echo ""
+else
+  # Pick the database to be installed
+  AVAILABLE_DB=$(ls "$REPO_DIR/dist")
+  if [ "$AVAILABLE_DB" == "" ]; then
+    echo -e "${RED}ERROR:${NO_COLOR} No db.X.tar.gz files found in dist."
+    echo -e "${RED}ERROR:${NO_COLOR} Build a database (e.g. base, sample) before installing."
+    exit 255
+  fi
+  echo "Choose the database to be installed."
+  select DB in "${AVAILABLE_DB[@]}"; do
+    if (("$REPLY" <= 0 || "$REPLY" > "${#AVAILABLE_DB[@]}")); then
+      echo -e "${ON_RED}ERROR:${NO_COLOR} Invalid choice. Please try again."
+    else
+      break
+    fi
+  done
+  echo ""
+fi
 
 echo -e "${UNDERLINE_GREEN}Installing the $DB database${NO_COLOR}"
 
