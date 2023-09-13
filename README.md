@@ -10,9 +10,11 @@ The following scripts contained in the `bin` directory are used to build the sam
 
 - `buildBaseDB.bash`: Builds an empty farmOS database.  This is used as a base for building other sample databases.
 
-## Manually Installing a Database
+## Installing a Database
 
-The following steps can be adapted to install a database into the currently running farmOS instance:
+The `bin/installDB.bash` script can be used to install any of the compressed database in the `dist` directory.
+
+A database can be installed into the currently running farmOS instance manually by using the commands below and changing the `db.X.tar.gz` filename in the `sudo tar` command to match the desired database:
 
 ```
 docker stop fd2_postgres
@@ -22,8 +24,6 @@ sudo rm -rf ./*
 sudo tar -xzf $HOME/FD2-SampleDBs/dist/db.base.tar.gz
 docker start fd2_postgres
 ```
-
-Change the `db.X.tar.gz` filename in the `sudo tar` command to match the desired database.
 
 ## Development
 
