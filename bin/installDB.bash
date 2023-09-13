@@ -17,8 +17,9 @@ if [ ! "$1" == "" ]; then
   fi
 else
   # Pick the database to be installed
-  AVAILABLE_DB=$(ls "$REPO_DIR/dist")
-  if [ "$AVAILABLE_DB" == "" ]; then
+  # shellcheck disable=SC2207
+  AVAILABLE_DB=( $(ls "$REPO_DIR/dist" ))
+  if [ ${#AVAILABLE_DB[@]} == 0 ]; then
     echo -e "${RED}ERROR:${NO_COLOR} No db.X.tar.gz files found in dist."
     echo -e "${RED}ERROR:${NO_COLOR} Build a database (e.g. base, sample) before installing."
     exit 255
