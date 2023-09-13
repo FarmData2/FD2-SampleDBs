@@ -12,9 +12,10 @@ Install the dependencies by:
 
 ## Building the Databases
 
-The following scripts contained in the `bin` directory are used to build the sample databases:
+The following scripts contained in the `src` directory are used to build the sample databases:
 
-- `buildBaseDB.bash`: Builds an empty farmOS database.  This is used as a base for building other sample databases.
+- `baseDB/buildBaseDB.bash`: Builds an empty farmOS database.  This is used as a base for building other sample databases.
+- `sampleDB/buildSampleDB.bash`: Builds a sample farmOS database populated with approximately 18 months of anonymized data from 2019-2020 at the Dickinson College farm.
 
 ## Installing a Database
 
@@ -41,7 +42,7 @@ To change, modify, update, add a database:
 1. Ensure that your `development` branch is synchronized with the `upstream`
 2. Create a new feature branch from the `development` branch
 3. Make and test changes in your feature branch
-4. Run the `bin/buildDBs.bash` script
+4. Run the appropriate script(s) to build the database
 5. Install and test that the new database works 
    - See [Manually Installing a Database](#manually-installing-a-database) above
 6. Commit to your feature branch:
