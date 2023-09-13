@@ -70,14 +70,16 @@ echo "  Deleted."
 echo "Bringing the farmos container back up..."
 docker start fd2_farmos > /dev/null
 error_check
-sleep 5
 echo "  Up."
 
 # Bring the database container back up.
 echo "Bringing the database container back up..."
 docker start fd2_postgres > /dev/null
 error_check
-sleep 5
+STATUS=$(docker exec fd2_postgres pg_isready)
+while [[ ! "$STATUS" == *"accepting connections"* ]]; do
+  STATUS=$(docker exec fd2_postgres pg_isready)
+done
 echo "  Up."
 
 # Reset the drupal settigns.php file
