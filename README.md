@@ -4,6 +4,12 @@ Code and tools for building the sample databases used for FarmData2 development.
 
 All of the following documentation assumes that operations are performed within the FarmData2 Development Environment.
 
+## Preliminaries
+
+Install the dependencies by:
+- Change into the `FD2-SampleDBs` directory
+- run `npm install`
+
 ## Building the Databases
 
 The following scripts contained in the `bin` directory are used to build the sample databases:
