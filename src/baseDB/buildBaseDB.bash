@@ -3,10 +3,11 @@
 
 SCRIPT_PATH=$(readlink -f "$0")       # Path to this script.
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")  # Path to directory containing this script.
-REPO_DIR=$(dirname "$SCRIPT_DIR")     # Path to the main repo directory      
+SRC_DIR=$(dirname "$SCRIPT_DIR")
+REPO_DIR=$(dirname "$SRC_DIR")     # Path to the main repo directory      
 
-source "$SCRIPT_DIR/colors.bash"
-source "$SCRIPT_DIR/lib.bash"
+source "$REPO_DIR/bin/colors.bash"
+source "$REPO_DIR/bin/lib.bash"
 
 # Ensure that this script is being run in the development container.
 HOST=$(docker inspect -f '{{.Name}}' "$HOSTNAME" 2> /dev/null)
@@ -27,6 +28,11 @@ echo -e "${UNDERLINE_GREEN}Building the base (empty) database${NO_COLOR}"
 echo "Clearing the drupal cache..."
 docker exec -it fd2_farmos drush cr
 echo "  Cleared."
+
+# Shut down the farmOS container
+echo "Stopping the farmOS container..."
+docker stop fd2_farmos > /dev/null
+echo "  Stopped."
 
 # Shut down database container
 echo "Stopping the database container..."
@@ -76,6 +82,20 @@ sudo rm -rf ./*
 error_check
 echo "  Deleted."
 
+# Bring the farmOS container back up.
+echo "Bringing the farmos container back up..."
+docker start fd2_farmos > /dev/null
+error_check
+sleep 5
+echo "  Up."
+
+# Bring the database container back up.
+echo "Bringing the database container back up..."
+docker start fd2_postgres > /dev/null
+error_check
+sleep 5
+echo "  Up."
+
 # Reset the drupal settigns.php file
 echo "Resetting the drupal settings.php file..."
 docker exec -it fd2_farmos rm /opt/drupal/web/sites/default/settings.php 
@@ -86,20 +106,13 @@ docker exec -it fd2_farmos chown www-data /opt/drupal/web/sites/default/settings
 error_check
 docker exec -it fd2_farmos chgrp www-data /opt/drupal/web/sites/default/settings.php
 error_check
-sleep 5
+sleep 10
 echo "  Reset."
-
-# Bring the database container back up.
-echo "Bringing the database container back up..."
-docker start fd2_postgres > /dev/null
-error_check
-sleep 5
-echo "  Up."
 
 # Doing farmOS Configure Site
 echo "Configuring the farmOS site..."
 safe_cd "$REPO_DIR"
-npx cypress run --spec=bin/farmOS.configBaseDB.cy.js
+npx cypress run --spec=src/baseDB/farmOS.configBaseDB.cy.js
 error_check
 echo "  Configured." 
 

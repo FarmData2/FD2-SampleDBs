@@ -5,6 +5,6 @@ module.exports = defineConfig({
   video: false,
   trashAssetsBeforeRuns: true,
   e2e: {
-    specPattern: "**/bin/*.cy.js",
+    specPattern: "**/*.cy.js",
   },
 });
