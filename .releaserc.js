@@ -45,6 +45,7 @@ const config = {
       {
         "assets": [
           { "path": "dist/db.base.tar.gz", "label": "Base (empty) database." },
+          { "path": "dist/db.sample.tar.gz", "label": "Sample database." },
         ],
       },
     ],
