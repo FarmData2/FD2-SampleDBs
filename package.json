@@ -1,10 +1,26 @@
 {
+  "name": "fd2-sampledbs",
+  "type": "module",
+  "scripts": {
+    "test-gui": "npx cypress open",
+    "test": "npx cypress run",
+    "test-util": "npx cypress run --spec \"**/util/farmosUtil.*.cy.js\"",
+    "doc-util": "npx jsdoc -c src/util/jsdoc.conf.json src/util/farmosUtil.js",
+    "print-log": "node src/util/printFarmosLogs.js",
+    "install-db": "bin/installDB.bash"
+  },
   "devDependencies": {
-    "cypress": "^12.17.2",
     "@saithodev/semantic-release-backmerge": "^3.2.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "conventional-changelog-conventionalcommits": "^7.0.1",
+    "csv": "^6.3.3",
+    "cypress": "^12.17.2",
+    "farmos": "^2.0.0-beta.16",
+    "jsdoc": "^4.0.2",
+    "node-localstorage": "^3.0.5",
+    "prettier": "^3.0.3",
+    "run-func": "^3.0.0",
     "semantic-release": "^21.1.1"
   }
 }

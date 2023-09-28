@@ -5,6 +5,7 @@ module.exports = defineConfig({
   video: false,
   trashAssetsBeforeRuns: true,
   e2e: {
-    specPattern: "**/*.cy.js",
+    baseUrl: 'http://farmos',
+    specPattern: '**/*.cy.js',
   },
 });
