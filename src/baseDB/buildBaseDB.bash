@@ -85,7 +85,7 @@ echo "  Up."
 # Reset the drupal settigns.php file
 echo "Resetting the drupal settings.php file..."
 docker exec -it fd2_farmos rm /opt/drupal/web/sites/default/settings.php 
-error_check
+# no error_check here as the file may not exist.
 docker exec -it fd2_farmos cp /opt/drupal/web/sites/default/default.settings.php /opt/drupal/web/sites/default/settings.php
 error_check
 docker exec -it fd2_farmos chown www-data /opt/drupal/web/sites/default/settings.php 

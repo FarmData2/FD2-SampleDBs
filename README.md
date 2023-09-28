@@ -19,18 +19,10 @@ The following scripts contained in the `src` directory are used to build the sam
 
 ## Installing a Database
 
-The `bin/installDB.bash` script can be used to install any of the compressed database in the `dist` directory.
-
-A database can be installed into the currently running farmOS instance manually by using the commands below and changing the `db.X.tar.gz` filename in the `sudo tar` command to match the desired database:
-
-```
-docker stop fd2_postgres
-sudo chmod g+rwx $HOME/FarmData2/docker/db
-cd $HOME/FarmData2/docker/db
-sudo rm -rf ./*
-sudo tar -xzf $HOME/FD2-SampleDBs/dist/db.base.tar.gz
-docker start fd2_postgres
-```
+The `bin/installDB.bash` script can be used to install any of the compressed database in the `dist` directory. Running `installDB.bash` 
+with no command line arguments displays a list of the available databases.
+Alternatively, the name of a `db.*.tar.gz` file in the `/dist` directory
+can be specified on the command line.
 
 ## Development
 

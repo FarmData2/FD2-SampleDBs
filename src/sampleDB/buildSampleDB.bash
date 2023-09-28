@@ -35,6 +35,20 @@ echo ""
 error_check
 echo ""
 
+# Add the areas
+node "$SCRIPT_DIR/addAreas.js"
+error_check
+echo ""
+
+# Delete the authentication token if it exists.
+# Necessary because base DB was reinstalled so old token is not valid. 
+echo "Deleting locally cached authentication token..."
+rm -rf "$SCRIPT_DIR/scratch"
+echo "Deleted."
+echo ""
+
+
+
 
 
 

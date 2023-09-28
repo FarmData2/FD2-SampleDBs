@@ -67,6 +67,10 @@ sudo tar -xzf "$REPO_DIR/dist/$DB" > /dev/null
 error_check
 echo "  Extracted."
 
+echo "Removing farmOS tokens..."
+rm -rf "$REPO_DIR/scratch"
+echo "Removed."
+
 echo "Restarting Postgres..."
 docker start fd2_postgres > /dev/null
 error_check

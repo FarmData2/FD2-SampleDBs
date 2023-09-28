@@ -2,22 +2,21 @@
 #
 # Format:
 #
-# Each line represents an area with the follwing comma delimited information:
+# Each line represents an area with the following comma delimited information:
 #   name,type,description
 #
 # A line beginning with a comma indicates a sub-area of the nearest 
 # area defined above.  See CHUAU and CHUAU-1, etc below for an 
 # example.
 #
-# The existing types of areas in farmOS are are:
-#   bed, building, greenhouse, paddock, field, landmark, water, property, other
-# Most commonly used are bed, greenhouse, fields
-#
-# Areas will appear in the order listed within the system.
-#
 # Anything following a # on a line is a considered a comment.
 # Thus, names and descriptions cannot contain #
 # Blank Lines are ignored.
+#
+# Fields are created as asset--land with land_type "field"
+# Greenhouses are created as asset-structure with type "greenhouse"
+# Beds are created as asset-land with land_type "bed" and with a parent
+#   that is either a field or a greenhouse.
 
 A,field,Field A
 ALF,field,Field ALF
@@ -70,7 +69,7 @@ Q,field,Field Q
 R,field,Field R
 RSCH,field,Field used for research
 S,field,Field S
-SEEDING BENCH,greenhouse,Seeding table in the greenhouse.
+SEEDING BENCH,greenhouse,Seeding table in the Greenhouse.
 SQ1,field,Field SQ1
 SQ2,field,Field SQ2
 SQ3,field,Field SQ3
