@@ -23,7 +23,11 @@ import * as farmosUtil from '../util/farmosUtil.js';
 
 //const farm = 
 const farm = await farmosUtil.getFarmOSInstance('http://farmos', 'farm', 'admin', 'admin');
-console.log(farm)
+//console.log(farm)
+
+// const land = await farmosUtil.getPlantableLand(farm)
+// console.dir(land)
+// console.log(land.length)
 
 //const info = await farm.remote.info()
 //console.log(info)
@@ -31,8 +35,9 @@ console.log(farm)
 //const quant = farm.log.create({ type: "quantity--standard" });
 //console.log(quant)
 
-//const users = await farmosUtil.getUsers(farm)
-//console.log(users)
+// const users = await farmosUtil.getUsers(farm)
+// console.log(users)
+// console.log(users.length)
 
 //const usernameMap = await farmosUtil.getUsernameMap(farm);
 //const usernameMap2 = await farmosUtil.getUsernameMap(farm);

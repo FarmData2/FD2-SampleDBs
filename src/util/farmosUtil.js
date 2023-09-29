@@ -74,7 +74,8 @@ export async function getFarmOSInstance(hostURL, client, user, pass) {
 
 /**
  * Print out the JSON structure of the specified farmOS record type.
- * (e.g. asset--land, log--harvest, etc...
+ * (e.g. asset--land, log--harvest, etc...  This is useful as a development
+ * and debugging tool.
  *
  * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
  * @param {string} recordType the type of farmOS record to display.
@@ -85,22 +86,31 @@ export function printObject(farm, recordType) {
 }
 
 /**
- * Get an array containing all of the users from the farmOS host.
+ * Get an array containing all of the active users from the farmOS host.  The users
+ * will appear in the array in order by the value of the `attributes.display_name`
+ * property.
+ *
+ * NOTE: The `Anonymous` user does not appear in the returned array.
  *
  * NOTE: This function makes an API call to the farmOS host.  Thus,
  * if the array is to be used multiple times it should be cached
  * by the calling code.
  *
  * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
- * @returns an array of farmOS `user` objects.
+ * @returns an array of farmOS `user--user` objects.
  */
 export async function getUsers(farm) {
   const users = await farm.user.fetch({
     filter: {
       type: "user--user",
+      status: true,
     },
     limit: Infinity,
   });
+
+  users.data.sort((o1, o2) =>
+    o1.attributes.display_name.localeCompare(o2.attributes.display_name)
+  );
 
   return users.data;
 }
@@ -109,14 +119,10 @@ export async function getUsers(farm) {
  * Get a map from the user 'display_name` to the corresponding
  * farmOS user object.
  *
- * NOTE: The `Anonymous` user is dropped from this `Map'.
- *
- * NOTE: This function makes an API call to the farmOS host.  Thus,
- * if the array is to be used multiple times it should be cached
- * by the calling code.
+ * NOTE: The returned `Map` is built on the value returned by {@link getUsers}.
  *
  * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
- * @returns an `Map` from the user `display_name` to the `user` object.
+ * @returns an `Map` from the user `display_name` to the `user--user` object.
  */
 export async function getUsernameToUserMap(farm) {
   const users = await getUsers(farm);
@@ -125,28 +131,19 @@ export async function getUsernameToUserMap(farm) {
     users.map((user) => [user.attributes.display_name, user])
   );
 
-  map.delete("Anonymous");
-
   return map;
 }
 
 /**
  * Get a map from the user `id` to the farmOS user object.
  *
- * NOTE: The `Anonymous` user is dropped from this `Map.`
- *
- * NOTE: This function makes an API call to the farmOS host.  Thus,
- * if the array is to be used multiple times it should be cached
- * by the calling code.
+ * NOTE: The returned `Map` is built on the value returned by {@link getUsers}.
  *
  * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
- * @returns an `Map` from the user `display_name` to the `user` object.
+ * @returns an `Map` from the user `display_name` to the `user--user` object.
  */
 export async function getUserIdToUserMap(farm) {
   const users = await getUsers(farm);
-
-  // Drop the Anonymous users.
-  users.shift()
 
   const map = new Map(users.map((user) => [user.id, user]));
 
@@ -157,15 +154,18 @@ export async function getUserIdToUserMap(farm) {
  * Add the user specified by the `ownerID` to the `obj` as the owner
  * of the asset or log.
  *
- * @param {object} obj a farmOS asset or log. This pushes an user
- *  object to the `relationships.owner` property of `obj`.
+ * This pushes an `user--user` object to the `relationships.owner` property of `obj`.
+ *
+ * @param {object} obj a farmOS asset or log.
  * @param {string} ownerId the id of the user to assign as the owner.
  * @throws {ReferenceError} if the `obj` does not have a `relationships.owner` property.
  * @return the `obj` with the owner added.
  */
 export function addOwnerRelationship(obj, ownerId) {
   if (!obj?.relationships.owner) {
-    throw new ReferenceError("The obj parameter does not have a relationships.owner property")
+    throw new ReferenceError(
+      "The obj parameter does not have a relationships.owner property"
+    );
   } else {
     obj.relationships.owner.push({
       type: "user--user",
@@ -180,15 +180,16 @@ export function addOwnerRelationship(obj, ownerId) {
  * Add the user specified by the `parentID` to the `obj` as the parent
  * of the asset or log.
  *
- * @param {object} obj a farmOS asset, log. This pushes an user
- *  object to the `relationships.parent` property of `obj`.
+ * @param {object} obj a farmOS asset or log.
  * @param {string} parentId the id of the user to assign as the parent.
  * @throws {ReferenceError} if the `obj` does not have a `relationships.parent` property.
  * @returns the `obj` with the parent added.
  */
 export function addParentRelationship(obj, parentId, parentType) {
   if (!obj?.relationships.parent) {
-    throw new ReferenceError("The obj parameter does not have a relationships.parent property")
+    throw new ReferenceError(
+      "The obj parameter does not have a relationships.parent property"
+    );
   } else {
     obj.relationships.parent.push({
       type: parentType,
@@ -199,36 +200,142 @@ export function addParentRelationship(obj, parentId, parentType) {
   return obj;
 }
 
-// Separate maps for direct seedings in the ground (fields/beds)
-// Tray seedings (greenhouses)
+/**
+ * Get the asset objects for all of the active places that represent fields or beds.
+ * These are the assets of type `asset--land` that have `land_type` of either
+ * `field` or `bed`.  The fields and beds will appear in alphabetical order
+ * by the value of the `attributes.name` property.
+ *
+ * NOTE: This function makes an API call to the farmOS host.  Thus,
+ * if the array is to be used multiple times it should be cached
+ * by the calling code.
+ *
+ * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
+ * @returns An array of all of land assets representing fields or beds.
+ */
+export async function getFieldsAndBeds(farm) {
+  // Done as two requests for now because of a bug in the farmOS.js library.
+  // https://github.com/farmOS/farmOS.js/issues/86
 
-// GET MAPS
-// USE type and land_type, structure_type 
+  const beds = await farm.asset.fetch({
+    filter: {
+      type: "asset--land",
+      land_type: "bed",
+      status: "active",
+    },
+    limit: Infinity,
+  });
 
+  const fields = await farm.asset.fetch({
+    filter: {
+      type: "asset--land",
+      land_type: "field",
+      status: "active",
+    },
+    limit: Infinity,
+  });
 
+  const land = fields.data.concat(beds.data);
+  land.sort((o1, o2) => o1.attributes.name.localeCompare(o2.attributes.name));
+
+  return land;
+}
 
 /**
- * Some of the farmOS objects contain circular references -
- * at least according to JSON.stringify. This function will
- * remove those circular references.  In most cases this seems
- * to produce an equivalent object or at least one that is good
- * enough for the purposes here.
+ * Get a map from the name of a field or bed land asset to the
+ * farmOS land asset object.
  *
- *  From: https://codedamn.com/news/javascript/how-to-fix-typeerror-converting-circular-structure-to-json-in-js
+ * NOTE: The returned `Map` is built on the value returned by {@link getFieldsAndBeds}.
+ *
+ * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
+ * @returns an `Map` from the field or bed `name` to the `asset--land` object.
  */
-// function dropCircularRefsStringify(obj) {
-//   let cache = [];
-//   let str = JSON.stringify(obj, function (key, value) {
-//     if (typeof value === "object" && value !== null) {
-//       if (cache.indexOf(value) !== -1) {
-//         // Circular reference found, discard key
-//         return;
-//       }
-//       // Store value in our collection
-//       cache.push(value);
-//     }
-//     return value;
-//   });
-//   cache = null; // reset the cache
-//   return str;
-// }
+export async function getFieldOrBedNameToAssetMap(farm) {
+  const fieldsAndBeds = await getFieldsAndBeds(farm);
+
+  const map = new Map(
+    fieldsAndBeds.map((land) => [land.attributes.name, land])
+  );
+
+  return map;
+}
+
+/**
+ * Get a map from the id of a field or bed land asset to the
+ * farmOS land asset object.
+ *
+ * NOTE: The returned `Map` is built on the value returned by {@link getFieldsAndBeds}.
+ *
+ * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
+ * @returns an `Map` from the field or bed `id` to the `asset--land` object.
+ */
+export async function getFieldOrBedIdToAssetMap(farm) {
+  const fieldsAndBeds = await getFieldsAndBeds(farm);
+
+  const map = new Map(fieldsAndBeds.map((land) => [land.id, land]));
+
+  return map;
+}
+
+/**
+ * Get the asset objects for all of the active structures that represent greenhouses.
+ * These are the assets of type `asset--structure` that have `structure_type` of 
+ * `greenhouse`.  The greenhouses will appear in alphabetical order
+ * by the value of the `attributes.name` property.
+ *
+ * NOTE: This function makes an API call to the farmOS host.  Thus,
+ * if the array is to be used multiple times it should be cached
+ * by the calling code.
+ *
+ * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
+ * @returns An array of all of land assets representing greenhouses.
+ */
+export async function getGreenhouses(farm) {
+  const greenhouses = await farm.asset.fetch({
+    filter: {
+      type: "asset--structure",
+      structure_type: "greenhouse",
+      status: "active"
+    },
+    limit: Infinity,
+  });
+
+  greenhouses.data.sort((o1, o2) => o1.attributes.name.localeCompare(o2.attributes.name));
+
+  return greenhouses.data;
+}
+
+/**
+ * Get a map from the name of a greenhouse asset to the
+ * farmOS structure asset object.
+ *
+ * NOTE: The returned `Map` is built on the value returned by {@link getGreenhouses}.
+ *
+ * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
+ * @returns an `Map` from the greenhouse `name` to the `asset--structure` object.
+ */
+export async function getGreenhouseNameToAssetMap(farm) {
+  const greenhouses = await getGreenhouses(farm);
+
+  const map = new Map(greenhouses.map((gh) => [gh.attributes.name, gh]));
+
+  return map;
+}
+
+/**
+ * Get a map from the id of a greenhouse asset to the
+ * farmOS structure asset object.
+ *
+ * NOTE: The returned `Map` is built on the value returned by {@link getGreenhouses}.
+ *
+ * @param {object} farm a `farmOS` object returned from `getFarmOSInstance`.
+ * @returns an `Map` from the greenhouse `id` to the `asset--structure` object.
+ */
+export async function getGreenhouseIdToAssetMap(farm) {
+  const greenhouses = await getGreenhouses(farm);
+
+  const map = new Map(greenhouses.map((gh) => [gh.id, gh]));
+
+  return map;
+}
+
