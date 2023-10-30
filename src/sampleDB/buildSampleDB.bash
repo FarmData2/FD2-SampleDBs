@@ -40,6 +40,11 @@ node "$SCRIPT_DIR/addAreas.js"
 error_check
 echo ""
 
+# Add the crop families and crops
+node "$SCRIPT_DIR/addCrops.js"
+error_check
+echo ""
+
 # Delete the authentication token if it exists.
 # Necessary because base DB was reinstalled so old token is not valid. 
 echo "Deleting locally cached authentication token..."
