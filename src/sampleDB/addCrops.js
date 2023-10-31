@@ -100,7 +100,9 @@ async function processRow(row) {
   } else if (row[2] != "") {
     console.log(
       "  Adding crop " +
-        row[2] +
+      parentCropName +
+      "-" +
+      row[2] +  
         " to crop family " +
         cropFamilyName +
         " with parent crop " +
@@ -110,7 +112,7 @@ async function processRow(row) {
     const crop = farm.term.create({
       type: "taxonomy_term--plant_type",
       attributes: {
-        name: row[2],
+        name: parentCropName + "-" + row[2],
       },
       crop_family: {
         type: "taxonomy_term--crop_family",
