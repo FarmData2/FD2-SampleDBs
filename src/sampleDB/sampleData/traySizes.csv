@@ -1,0 +1,18 @@
+# Sample Data for the seeding tray sizes
+#
+# Format:
+#
+# Each line represents a tray size with the following comma delimited information:
+#   size,description
+#
+# Anything following a # on a line is a considered a comment.
+# Thus, names and descriptions cannot contain #
+# Blank Lines are ignored.
+#
+# Tray sizes are created as taxonomy_term--tray_sizes terms.
+50,50 cell tray
+72,72 cell tray
+96,96 cell tray
+128,128 cell tray
+200,200 cell tray
+288,288 cell tray

@@ -26,7 +26,7 @@ const logTypes = [
   "taxonomy_term--animal_type", "taxonomy_term--material_type",
   "taxonomy_term--season", "taxonomy_term--log_category",
   "taxonomy_term--crop_family", "taxonomy_term--unit", 
-  "taxonomy_term--plant_type",
+  "taxonomy_term--plant_type", "taxonomy_term--tray_size",
   "user--user"
 ]
 

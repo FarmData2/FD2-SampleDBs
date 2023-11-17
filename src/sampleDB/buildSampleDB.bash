@@ -30,6 +30,15 @@ echo ""
 error_check
 echo ""
 
+# Add the Allowed CORS origins to the farm consumer.
+echo "Adding CORS origins..."
+CUR_DIR=$(pwd)
+safe_cd "$REPO_DIR"
+npx cypress run --spec=src/sampleDB/addConsumerCORSOrigins.cy.js
+error_check 
+safe_cd "$CUR_DIR"
+echo "Added."
+
 # Add the users and assign their roles
 "$SCRIPT_DIR/addUsers.bash"
 error_check
@@ -45,17 +54,18 @@ node "$SCRIPT_DIR/addCrops.js"
 error_check
 echo ""
 
+# Add the seeding tray sizes
+node "$SCRIPT_DIR/addTraySizes.js"
+error_check
+echo ""
+
+
 # Delete the authentication token if it exists.
 # Necessary because base DB was reinstalled so old token is not valid. 
 echo "Deleting locally cached authentication token..."
 rm -rf "$SCRIPT_DIR/scratch"
 echo "Deleted."
 echo ""
-
-
-
-
-
 
 # Make sure that the new FarmData2/docker/db directory has appropriate permissions.
 echo "Setting permissions on $HOME/FarmData2/docker/db..."
