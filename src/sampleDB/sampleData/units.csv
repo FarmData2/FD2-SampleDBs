@@ -1,45 +1,55 @@
 # Defines the Units that can be assigned to logs
 
 # Format:
-# Each row defineds a unit.  
-# The parent items (e.g. Count, Weight) correspond to the different 
-# "measures" that can be used in quantity blocks.
-# The sub-types (e.g. Beds, Row Feet) begin with a , and define 
-# the values that can be used for the "Unit" field of a quantity block.
+# Each row defines a unit.  
 #
-# Having parent types will allow us to show only the appropriate ones
+# The parent items (e.g. Count, Weight) start in column 0 and have:
+# name,description
+#
+# The parent items correspond to the different "measures" that can be 
+# used in quantity blocks. (see: https://farmos.org/model/type/quantity/#measure).
+#
+# The sub-types (e.g. Beds, Row Feet) start in the second column (i.e. they
+# begin with a ,) and have:
+# ,name,description
+#
+# The sub-types define the values that can be used for the "Unit" field 
+# of a quantity block.
+#
+# Having parent types allows the UI to show only the appropriate ones
 # for a given quantity (e.g. only Counts etc...) as appropriate.
 
-Count
-,BEDS
-,BUNCH
-,EACH
-,EAR
-,FLATS
-,HEAD
-,HALFSTALK
-,PEOPLE
-,PIECE
-,SEEDS
-,TRAY
-Length/depth
-,ROW FEET
-Weight
-,POUND
-Area
-,ACRES
-Volume
-,PINT
-,QUART
-Time
-,HOURS
-Temperature
-Pressure
-Water Content
-Value
-Rate
-Rating
-Ratio
-,CELLS/FLAT
-,ROWS/BED
-Probability
+Count,Parent term for units that are counts.
+#,BEDS
+#,BUNCH
+#,EACH
+#,EAR
+#,FLATS
+#,HEAD
+#,HALFSTALK
+#,PEOPLE
+#,PIECE
+,SEEDS,A number of seeds.
+,TRAYS,A number of seeding trays.
+#Length/depth
+#,ROW FEET
+#Weight
+#,POUND
+#Area
+#,ACRES
+#Volume
+#,PINT
+#,QUART
+#Time
+#,HOURS
+#Temperature
+#Pressure
+#Water Content
+#Value
+#Rate
+#Rating
+Ratio,Parent term for units that are ratios.
+,CELLS/TRAY,The number of cells in a tray.
+#,CELLS/FLAT
+#,ROWS/BED
+#Probability
