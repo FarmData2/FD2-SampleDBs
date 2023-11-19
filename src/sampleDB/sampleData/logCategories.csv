@@ -1,0 +1,15 @@
+# Sample Data for the Log category taxonomy terms
+#
+# Format:
+#
+# Each line represents one log category with the following 
+# comma delimited information:
+#   name,description
+#
+# Anything following a # on a line is a considered a comment.
+# Thus, names and descriptions cannot contain #
+# Blank Lines are ignored.
+
+seeding_cover_crop,For seeding logs representing seedings of cover crops.
+seeding_direct,For seeding logs representing seedings directly in the ground.
+seeding_tray,For seeding logs representing seedings in trays.
