@@ -64,6 +64,11 @@ node "$SCRIPT_DIR/addUnits.js"
 error_check
 echo ""
 
+# Add the units
+node "$SCRIPT_DIR/addLogCategories.js"
+error_check
+echo ""
+
 # Delete the authentication token if it exists.
 # Necessary because base DB was reinstalled so old token is not valid. 
 echo "Deleting locally cached authentication token..."
