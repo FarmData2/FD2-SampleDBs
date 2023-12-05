@@ -22,6 +22,7 @@
 Count,Parent term for units that are counts.
 #,BEDS
 #,BUNCH
+,CELLS,A number of seeding tray cells.
 #,EACH
 #,EAR
 #,FLATS
@@ -49,7 +50,7 @@ Count,Parent term for units that are counts.
 #Rate
 #Rating
 Ratio,Parent term for units that are ratios.
-,CELLS/TRAY,The number of cells in a tray.
-#,CELLS/FLAT
+,CELLS/TRAY,The number of cells in a seeding tray.
 #,ROWS/BED
+,SEEDS/CELL,The number of seeds per cell in a seeding tray.
 #Probability
