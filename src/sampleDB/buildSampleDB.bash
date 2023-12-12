@@ -40,15 +40,6 @@ error_check
 safe_cd "$CUR_DIR"
 echo "Added."
 
-# Generate the API keys
-echo "Generating API keys..."
-CUR_DIR=$(pwd)
-safe_cd "$REPO_DIR"
-npx cypress run --spec=src/sampleDB/generateAPIKeys.cy.js
-error_check 
-safe_cd "$CUR_DIR"
-echo "Generated."
-
 # Add the users and assign their roles
 "$SCRIPT_DIR/addUsers.bash"
 error_check
