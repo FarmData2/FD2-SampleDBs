@@ -73,9 +73,12 @@ A maintainer will:
 1. Review your pull request and provide feedback
 2. If/when appropriate squash merge your pull request into the `development` branch
    - The squash merge commit message must be a conventional commit message.
-     - This will create a pre-release `vX.Y.Z-development.n`
-       - X.Y.Z is the semantic version of the next release if created at the moment
-       - n is a sequence number for pre-releases with the same semantic version number.
+     - See [Conventional Commits](https://conventionalcommits.org)
+     - In addition, `BREAKING CHANGE:` must be included in the footer of the commit message to produce a breaking change.
+       - See [Semantic Release](https://github.com/semantic-release/semantic-release)
+   - This will create a pre-release `vX.Y.Z-development.n`
+     - X.Y.Z is the semantic version of the next release if created at the moment
+     - n is a sequence number for pre-releases with the same semantic version number.
 
 ## Creating a Release
 
