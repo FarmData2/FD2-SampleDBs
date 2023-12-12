@@ -8,6 +8,16 @@ source "$REPO_DIR/bin/preflight.bash"
 
 echo "Enabling FarmData2 modules..."
 
+echo "  Enabling the farmOS Simple Auth Password Grant Module..."
+docker exec -it fd2_farmos drush en simple_oauth_password_grant -y
+error_check
+echo "  Enabled."
+
+echo "  Enabling the farmOS Default API Consumer Module..."
+docker exec -it fd2_farmos drush en farm_api_default_consumer -y
+error_check
+echo "  Enabled."
+
 echo "  Enabling the farmOS Inventory Module..."
 docker exec -it fd2_farmos drush en farm_inventory -y
 error_check
