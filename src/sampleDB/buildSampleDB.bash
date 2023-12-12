@@ -25,8 +25,7 @@ echo ""
 error_check
 echo ""
 
-# Enable the farmOS modules needed for FarmData2, including
-# the FarmData2 modules themselves.
+# Enable the FarmData2 modules in farmos
 "$SCRIPT_DIR/enableFarmData2Modules.bash"
 error_check
 echo ""
@@ -39,15 +38,6 @@ npx cypress run --spec=src/sampleDB/addConsumerCORSOrigins.cy.js
 error_check 
 safe_cd "$CUR_DIR"
 echo "Added."
-
-# Generate the API keys
-echo "Generating API keys..."
-CUR_DIR=$(pwd)
-safe_cd "$REPO_DIR"
-npx cypress run --spec=src/sampleDB/generateAPIKeys.cy.js
-error_check 
-safe_cd "$CUR_DIR"
-echo "Generated."
 
 # Add the users and assign their roles
 "$SCRIPT_DIR/addUsers.bash"
