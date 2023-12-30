@@ -10,12 +10,17 @@ Install the dependencies by:
 - Change into the `FD2-SampleDBs` directory
 - run `npm install`
 
+Link to the `FarmData2/library/farmosUtil` directory:
+  - The following commands assume that `FarmData2` and `FD2-SampleDBs` are cloned in the user's home directory.  Please adjust accordingly.
+  - `cd ~/FD2-SampleDBs/library`
+  - `ln -s ~/FarmData2/library/farmosUtil farmosUtil`
+
 ## Building the Databases
 
 The following scripts contained in the `src` directory are used to build the sample databases:
 
 - `baseDB/buildBaseDB.bash`: Builds an empty farmOS database.  This is used as a base for building other sample databases.
-- `sampleDB/buildSampleDB.bash`: Builds a sample farmOS database populated with approximately 18 months of anonymized data from 2019-2020 at the Dickinson College farm.
+- `sampleDB/buildSampleDB.bash`: Builds a sample farmOS database with a small set of records for testing FarmData2 features during development.
 
 ## Installing a Database
 
@@ -27,27 +32,13 @@ The `bin/installDB.bash` script can be used to install any of the compressed dat
 
 The structure of a farmOS record (e.g. asset, log, quantity, term, user) can be displayed using the command:
 
-`npm run print-log <type>`
+`npm run printlog <type>`
 
 where `<type>` is one of the record types.  Run the command without the `<type` argument to see a list of all of the record types.
 
 ### farmosUtil.js
 
-The `src/util/farmosUtil.js` file contains a module of useful utility functions for working with farmOS records.  
-
-#### Running Tests
-
-The `src/util/` directory contains a collection of unit tests for the `farmosUtil.js` module.  To run the tests use one of the following commands:
-
-- `npm run test-util` - run all of the test for `farmosUtil.js`
-- `npm run test-gui` - launch the Cypress GUI test runner.
-- `npm run test <spec blob>` - run the tests that match the `spec blob>`.  This is useful for running just the tests for the module function currently being worked on.
-
-#### Generating Documentation
-
-The `farmosUtil.js` module is documented using JSDOC.  Use the following command to generate the documentation for this module in the `docs` directory:
-
-- `npm run doc-util`
+The `src/library/farmosUtil/` is a symlink to the `FarmData2/library/farmosUtil` module that provides useful utility functions for working with farmOS records.  These functions should be maintained and updated from the `FarmData2` repo.
 
 ### Development Workflow
 

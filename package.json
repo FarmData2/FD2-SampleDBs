@@ -2,11 +2,7 @@
   "name": "fd2-sampledbs",
   "type": "module",
   "scripts": {
-    "test-gui": "npx cypress open",
-    "test": "npx cypress run",
-    "test-util": "npx cypress run --spec \"**/util/farmosUtil.*.cy.js\"",
-    "doc-util": "npx jsdoc -c src/util/jsdoc.conf.json src/util/farmosUtil.js",
-    "print-log": "node src/util/printFarmosLogs.js",
+    "printlog": "node bin/printFarmosLogs.js",
     "install-db": "bin/installDB.bash"
   },
   "devDependencies": {

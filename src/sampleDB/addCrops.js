@@ -1,8 +1,9 @@
-import { processCsvFile } from "../util/csvUtil.js";
-import * as farmosUtil from "../util/farmosUtil.js";
+import { processCsvFile } from "../library/cvsUtil/csvUtil.js";
+import * as farmosUtil from "../library/farmosUtil/farmosUtil.js";
 
 import { basename, dirname } from "path";
 import { fileURLToPath } from "url";
+import { LocalStorage } from 'node-localstorage';
 
 /*
  * Set the name of the CSV file to be processed and the
@@ -24,10 +25,16 @@ const user = "admin";
 const pass = "admin";
 
 /*
+ * Get a local storage object that we'll use to simulate the
+ * browser's localStorage and sessionStorage when running in node.
+ */
+let ls = new LocalStorage('scratch');
+
+/*
  * Get a fully initialized and logged in instance of the farmOS.js
  * farmOS object that will be used to write assets, logs, etc.
  */
-const farm = await farmosUtil.getFarmOSInstance(URL, client, user, pass);
+const farm = await farmosUtil.getFarmOSInstance(URL, client, user, pass, ls);
 
 /*
  * Get any farmos id maps that we need for processing the data.
@@ -119,11 +126,10 @@ async function processRow(row) {
         id: cropFamilyId,
       },
     });
-    farmosUtil.addParentRelationship(
-      crop,
-      parentCropId,
-      "taxonomy_term--plant_type"
-    );
+    crop.relationships.parent.push({
+      type: "taxonomy_term--plant_type",
+      id: parentCropId,
+    });
 
     try {
       const result = await farm.term.send(crop);

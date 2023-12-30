@@ -85,10 +85,16 @@ sudo chgrp fd2dev "$HOME/FarmData2/docker/db"
 error_check
 echo "  Set."
 
+# Give things time to settle before compressing DB.
+# This has caused errors where some of the DB files 
+# change while they are being compressed.
+sleep 2
+
 # Compress the sample database into the dist directory
 echo "Compressing base database..."
 safe_cd "$HOME/FarmData2/docker/db"
 DIST_FILE="$REPO_DIR/dist/db.sample.tar.gz"
+chmod 777 "$DIST_FILE"
 rm "$DIST_FILE" > /dev/null
 sudo tar czvf "$DIST_FILE" ./* > /dev/null
 error_check
