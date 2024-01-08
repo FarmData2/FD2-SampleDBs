@@ -70,6 +70,11 @@ node "$SCRIPT_DIR/addLogCategories.js"
 error_check
 echo ""
 
+# Add the equipment
+node "$SCRIPT_DIR/addEquipment.js"
+error_check
+echo ""
+
 # Delete the authentication token if it exists.
 # Necessary because base DB was reinstalled so old token is not valid. 
 echo "Deleting locally cached authentication token..."

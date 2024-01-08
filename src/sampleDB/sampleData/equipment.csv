@@ -1,0 +1,34 @@
+# Sample Data for the equipment assets
+#
+# Format:
+#
+# Each line represents either a category of equipment or 
+# any equipment asset.
+#
+# Equipment categories have the format:
+#   category name,category description.
+#
+# Equipment within a category are listed immediately following its category
+# and have the following comma delimited information:
+#   ,name,manufacturer,model,description
+#
+# Anything following a # on a line is a considered a comment.
+# Thus, names and descriptions cannot contain #
+# Blank Lines are ignored.
+
+General,Equipment used for a variety of operations.
+,Tractor,Company G,468,A standard tractor.
+,Small Tractor,Company I,987,A compact tractor.
+#Tillage,Equipment used exclusively for tillage.
+#,Bed Shaper,Company A,123,A bed shaper.
+#,Chisel Plow,Company B,234,A chisel plow.
+#,Rotary Cultivator,Company C,456,A rotary cultivator.
+#,Disk,Company D,789,A disc cultivator.
+#,Harrow,Company E,135,A harrow.
+Seeding,Equipment used exclusively for Seeding.
+,Tow Behind Broadcaster,Company J,876,A broadcast seed spreader.
+,Portable Broadcaster,Company K, 765,A chest mounted portable seed spreader.
+,Planter,Company F,357,A planter.
+,Seeding Drill,Company E,246,A seeding drill.
+#Spraying,Equipment used exclusively for spraying.
+#,Sprayer,Company H,379,A sprayer.
