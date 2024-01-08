@@ -32,8 +32,9 @@ Count,Parent term for units that are counts.
 #,PIECE
 ,SEEDS,A number of seeds.
 ,TRAYS,A number of seeding trays.
-#Length/depth
-#,ROW FEET
+Length/depth
+,FEET,A number of feet.
+,INCHES,A number of inches.
 #Weight
 #,POUND
 #Area
@@ -47,10 +48,11 @@ Count,Parent term for units that are counts.
 #Pressure
 #Water Content
 #Value
-#Rate
+Rate,Parent term for units that are rates.
+,MPH,A speed in miles per hour.
 #Rating
 Ratio,Parent term for units that are ratios.
 ,CELLS/TRAY,The number of cells in a seeding tray.
-#,ROWS/BED
+,ROWS/BED,The number of rows in a bed.
 ,SEEDS/CELL,The number of seeds per cell in a seeding tray.
 #Probability
