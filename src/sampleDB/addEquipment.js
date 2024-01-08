@@ -64,7 +64,7 @@ async function processRow(row) {
       type: "asset--equipment",
       attributes: {
         name: row[0],
-        description: row[1],
+        notes: row[1],
       },
     });
 
@@ -88,7 +88,7 @@ async function processRow(row) {
         name: row[1],
         manufacturer: row[2],
         model: row[3],
-        description: row[4],
+        notes: row[4],
       },
     });
     equipment.relationships.parent.push({
