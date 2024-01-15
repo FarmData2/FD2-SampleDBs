@@ -13,3 +13,5 @@
 seeding_cover_crop,For seeding logs representing seedings of cover crops.
 seeding_direct,For seeding logs representing seedings directly in the ground.
 seeding_tray,For seeding logs representing seedings in trays.
+
+activity_soil_disturbance_tillage,For activity logs representing tillage soil disturbances.
