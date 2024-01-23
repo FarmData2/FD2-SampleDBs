@@ -10,8 +10,21 @@
 # Thus, names and descriptions cannot contain #
 # Blank Lines are ignored.
 
+# FarmData2 Specific Log Categories
 seeding_cover_crop,For seeding logs representing seedings of cover crops.
 seeding_direct,For seeding logs representing seedings directly in the ground.
 seeding_tray,For seeding logs representing seedings in trays.
 
 activity_soil_disturbance_tillage,For activity logs representing tillage soil disturbances.
+
+# Log Categories from Our-Sci Conventions
+# https://our-sci.gitlab.io/software/json_schema_distribution/staging_wiki/docs/Description%20and%20Specification
+amendment,For logs where soil amendments are made.
+grazing,For logs that record animal grazing events.
+irrigation,For logs associated with field irrigation.
+pest_disease_control,For logs related to pest or disease control.
+seeding,For logs associated with seedings.
+termination,For logs associated with termination of a planting.
+tillage,For logs representing soil disturbances.
+transplanting,For logs representing transplantation of a plant.
+weed_control,For logs related to weed control.
