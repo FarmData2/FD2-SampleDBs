@@ -11,13 +11,14 @@
 # Blank Lines are ignored.
 
 # FarmData2 Specific Log Categories
-seeding_cover_crop,For seeding logs representing seedings of cover crops.
-seeding_direct,For seeding logs representing seedings directly in the ground.
-seeding_tray,For seeding logs representing seedings in trays.
+# These are added to any log associated with the type of activity.
+# For example, an activity (e.g. a `tillage`) would also have a category of `seeding_direct`
+# if it is associated with a direct seeding event.
+seeding_cover_crop,For logs associated with the seeding of a cover crop.
+seeding_direct,For logs associated with direct seedings.
+seeding_tray,For logs associated with seedings in trays.
 
-activity_soil_disturbance_tillage,For activity logs representing tillage soil disturbances.
-
-# Log Categories from Our-Sci Conventions
+# Log Categories from Our-Sci Conventions for PASA SHBS.
 # https://our-sci.gitlab.io/software/json_schema_distribution/staging_wiki/docs/Description%20and%20Specification
 amendment,For logs where soil amendments are made.
 grazing,For logs that record animal grazing events.
