@@ -65,11 +65,6 @@ node "$SCRIPT_DIR/addUnits.js"
 error_check
 echo ""
 
-# Add the units
-node "$SCRIPT_DIR/addLogCategories.js"
-error_check
-echo ""
-
 # Add the equipment
 node "$SCRIPT_DIR/addEquipment.js"
 error_check
