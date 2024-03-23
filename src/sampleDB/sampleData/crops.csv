@@ -13,7 +13,7 @@
 #   and links it to the Farm Crop Family that it appears under.
 #
 # A line beginning with two commas:
-#   Creates a term in the Farm Crop/Varieties vocabularly with
+#   Creates a term in the Farm Crop/Varieties vocabulary with
 #   the name being PARENT-CHILD (e.g. ONION-SPRING)
 #   and sets its parent to the crop that it appears under 
 #   (i.e. ONION is the parent of ONION-SPRING)
