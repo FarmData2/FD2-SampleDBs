@@ -10,10 +10,12 @@ Install the dependencies by:
 - Change into the `FD2-SampleDBs` directory
 - run `npm install`
 
-Link to the `FarmData2/library/farmosUtil` directory:
-  - The following commands assume that `FarmData2` and `FD2-SampleDBs` are cloned in the user's home directory.  Please adjust accordingly.
-  - `cd ~/FD2-SampleDBs/library`
-  - `ln -s ~/FarmData2/library/farmosUtil farmosUtil`
+Ensure that the FarmData2 repository has also been cloned.
+- `git clone https://github.com/FarmData2/FarmData2.git`
+
+Create the links to the useful libraries in the FarmData2 repository:
+- Change into the `FD2-SampleDBs` directory
+- `bin/linkFD2Libs.bash`
 
 ## Building the Databases
 
@@ -36,9 +38,13 @@ The structure of a farmOS record (e.g. asset, log, quantity, term, user) can be 
 
 where `<type>` is one of the record types.  Run the command without the `<type` argument to see a list of all of the record types.
 
-### farmosUtil.js
+### FarmData2 Libraries
 
-The `src/library/farmosUtil/` is a symlink to the `FarmData2/library/farmosUtil` module that provides useful utility functions for working with farmOS records.  These functions should be maintained and updated from the `FarmData2` repo.
+The `linkFD2libs.bash` command will ensure that the libraries from FarmData2 that are used are linked into this repository.  A symlink for each linked library is created in the `src/libraries` directory.
+
+When new a library is added to FarmData2 that are needed here the `linkFD2libs.bash` and `.gitignore` files should be updated so that the new library is linked.
+
+The libraries should be maintained only from the FarmData2 repository.  They should not be modified via the `src/libraries` in this project.
 
 ### Development Workflow
 

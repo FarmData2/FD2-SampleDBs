@@ -1,3 +1,4 @@
+backmerged
 bashlint
 Braught
 chgrp
@@ -17,6 +18,7 @@ novnc
 pgid
 pinia
 preprocess
+printlog
 rushstack
 setsid
 shellcheck
