@@ -11,6 +11,7 @@ const config = {
         "preset": "angular",
         "releaseRules": [
           { "type": "build", "release": false },
+          { "type": "chore", "release": false },
           { "type": "ci", "release": false },
           { "type": "docs", "release": false },
           { "type": "perf", "release": false },
