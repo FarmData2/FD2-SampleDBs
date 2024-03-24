@@ -8,7 +8,6 @@
 # Anything following a # on a line is a considered a comment.
 # Thus, names and descriptions cannot contain #
 # Blank Lines are ignored.
-#
 
 "2019-03-11","BROCCOLI","CHUAU","4","128","1","First broccoli tray seeding."
 "2019-03-29","BROCCOLI","CHUAU","4","128","1","Another broccoli tray seeding."
@@ -38,20 +37,20 @@
 
 "2019-04-19","ZUCCHINI","JASMINE","2","50","1","First zucchini tray seeding."
 "2019-05-03","ZUCCHINI","JASMINE","2","50","1","Another zucchini tray seeding."
-"2019-05-13","ZUCCHINI","JASMINE","2","50","1".""
+"2019-05-13","ZUCCHINI","JASMINE","2","50","1",""
 "2019-05-31","ZUCCHINI","GHANA","3","50","1",""
 "2019-06-13","ZUCCHINI","GHANA","3","50","1","Last zucchini tray seeding."
 
-"2019-02-19","LETTUCE-ICEBERG","CHUAU","3","72","First lettuce tray seeding."
-"2019-03-04","LETTUCE-ICEBERG","GHANA","4","72","Another lettuce tray seeding."
-"2019-03-29","LETTUCE-ICEBERG","JASMINE","2","128",""
-"2019-05-24","LETTUCE-ICEBERG","CHUAU","2","128",""
-"2019-06-05","LETTUCE-ICEBERG","GHANA","2","128",""
-"2019-06-20","LETTUCE-ICEBERG","JASMINE","2","128",""
-"2019-07-05","LETTUCE-ICEBERG","CHUAU","4","128",""
-"2019-07-13","LETTUCE-ICEBERG","GHANA","4","128",""
-"2019-07-17","LETTUCE-ICEBERG","JASMINE","4","128",""
-"2019-07-25","LETTUCE-ICEBERG","CHUAU","2","128",""
-"2019-08-07","LETTUCE-ICEBERG","GHANA","2","128",""
-"2019-08-14","LETTUCE-ICEBERG","JASMINE","3","128",""
-"2019-08-29","LETTUCE-ICEBERG","CHUAU","2","128","Last lettuce tray seeding."
+"2019-02-19","LETTUCE-ICEBERG","CHUAU","3","72","1","First lettuce tray seeding."
+"2019-03-04","LETTUCE-ICEBERG","GHANA","4","72","1","Another lettuce tray seeding."
+"2019-03-29","LETTUCE-ICEBERG","JASMINE","2","128","1",""
+"2019-05-24","LETTUCE-ICEBERG","CHUAU","2","128","1",""
+"2019-06-05","LETTUCE-ICEBERG","GHANA","2","128","1",""
+"2019-06-20","LETTUCE-ICEBERG","JASMINE","2","128","1",""
+"2019-07-05","LETTUCE-ICEBERG","CHUAU","4","128","1",""
+"2019-07-13","LETTUCE-ICEBERG","GHANA","4","128","1",""
+"2019-07-17","LETTUCE-ICEBERG","JASMINE","4","128","1",""
+"2019-07-25","LETTUCE-ICEBERG","CHUAU","2","128","1",""
+"2019-08-07","LETTUCE-ICEBERG","GHANA","2","128","1",""
+"2019-08-14","LETTUCE-ICEBERG","JASMINE","3","128","1",""
+"2019-08-29","LETTUCE-ICEBERG","CHUAU","2","128","1","Last lettuce tray seeding."
