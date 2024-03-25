@@ -2,6 +2,6 @@ node_modules
 scratch
 docs
 src/library/farmosUtil
-src/library/tray_seeding
-src/library/direct_seeding
+src/library/traySeeding
+src/library/directSeeding
 
