@@ -13,9 +13,9 @@ Install the dependencies by:
 Ensure that the FarmData2 repository has also been cloned.
 - `git clone https://github.com/FarmData2/FarmData2.git`
 
-Create the links to the useful libraries in the FarmData2 repository:
+Copy the useful libraries from the FarmData2 repository:
 - Change into the `FD2-SampleDBs` directory
-- `bin/linkFD2Libs.bash`
+- `bin/buildFD2Libs.bash`
 
 ## Building the Databases
 
@@ -40,11 +40,9 @@ where `<type>` is one of the record types.  Run the command without the `<type` 
 
 ### FarmData2 Libraries
 
-The `linkFD2libs.bash` command will ensure that the libraries from FarmData2 that are used are linked into this repository.  A symlink for each linked library is created in the `src/libraries` directory.
+The `buildFD2libs.bash` command will ensure that the libraries from FarmData2 that are used are copied into this repository.  A directory for each library is created in the `src/libraries` directory.  The imports within the relevant library files are adjusted to the directory structure used here.
 
-When new a library is added to FarmData2 that are needed here the `linkFD2libs.bash` and `.gitignore` files should be updated so that the new library is linked.
-
-The libraries should be maintained only from the FarmData2 repository.  They should not be modified via the `src/libraries` in this project.
+The libraries should be maintained only from the FarmData2 repository. When new a library is updated in FarmData2 or added to FarmData2 and the changes are needed here the `buildFD2libs.bash` and `.gitignore` files should be updated and the `buildFD2libs.bash` script should be run again so that the changes are copied and adapted.
 
 ### Development Workflow
 
