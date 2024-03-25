@@ -1,5 +1,6 @@
 import { processCsvFile } from "../library/cvsUtil/csvUtil.js";
 import * as farmosUtil from "../library/farmosUtil/farmosUtil.js";
+import * as traySeeding from "../library/tray_seeding/lib.js";
 
 import { basename, dirname } from "path";
 import { fileURLToPath } from "url";
@@ -74,6 +75,10 @@ async function processRow(row) {
       form.locationName +
       "..."
   );
+
+  await traySeeding.submitForm(form).catch((err) => {
+    console.log("  " + err);
+  });
 
   console.log("  Added.");
 }
