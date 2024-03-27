@@ -67,7 +67,7 @@ async function processRow(row) {
   };
 
   console.log(
-    "  Adding tray seeding log on " +
+    "  Adding tray seeding on " +
       form.seedingDate +
       " for " +
       form.cropName +
