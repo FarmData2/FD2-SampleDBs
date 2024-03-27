@@ -8,6 +8,9 @@ source "$REPO_DIR/bin/preflight.bash"
 
 echo -e "${UNDERLINE_GREEN}Building the sample database${NO_COLOR}"
 
+# Ensure that the FD2 libraries are up to date.
+"$REPO_DIR/bin/buildFD2Libs.bash"
+
 # Ensure that the base (empty) database exits
 if [ ! -f "$REPO_DIR/dist/db.base.tar.gz" ]; then
   echo -e "${RED}ERROR:${NO_COLOR} The db.base.tar.gz database must exist."

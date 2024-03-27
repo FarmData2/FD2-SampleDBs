@@ -1,4 +1,9 @@
-# Sample Data for tray seedings
+# Sample Data for tray seedings.
+#
+# The tray seedings in this file will remain tray seedings and will
+# not be transplanted in the sample database.  The tray seedings
+# contained in the transplanting.csv file will be transplanted in 
+# the sample database.
 #
 # Format:
 #
@@ -12,22 +17,18 @@
 "2019-03-11","BROCCOLI","CHUAU","4","128","1","First broccoli tray seeding."
 "2019-03-29","BROCCOLI","CHUAU","4","128","1","Another broccoli tray seeding."
 "2019-06-13","BROCCOLI","CHUAU","9","50","1",""
-"2019-06-27","BROCCOLI","GHANA","9","50","1",""
 "2019-07-12","BROCCOLI","GHANA","13","128","1",""
-"2019-07-25","BROCCOLI","GHANA","11","128","1",""
 "2019-07-26","BROCCOLI","JASMINE","2","288","1","Last broccoli tray seeding."
 
 "2019-03-22","PEPPERS-BELL","JASMINE","6","128","1","First bell pepper tray seeding."
-"2019-03-25","PEPPERS-BELL","JASMINE","2","128","1","Another bell pepper tray seeding."
 "2019-04-12","PEPPERS-BELL","JASMINE","7","128","1","Last bell pepper tray seeding.",
 
 "2019-04-12","HERB-BASIL","GHANA","3","96","1","First basil tray seeding."
-"2019-05-10","HERB-BASIL","CHUAU","4","200","1",""
+"2019-05-10","HERB-BASIL","CHUAU","4","200","1","Another basil tray seeding."
 "2019-06-05","HERB-BASIL","GHANA","2","288","1","Last basil tray seeding."
 
 "2019-06-05","CAULIFLOWER","CHUAU","3","128","1","First cauliflower tray seeding."
 "2019-06-27","CAULIFLOWER","CHUAU","6","128","1","Another cauliflower tray seeding."
-"2019-07-12","CAULIFLOWER","CHUAU","6","128","1",""
 "2019-07-26","CAULIFLOWER","CHUAU","2","128","1","Last cauliflower tray seeding."
 
 "2019-05-03","CANTALOUPE","GHANA","11","50","1","First cantaloupe tray seeding."
@@ -37,20 +38,16 @@
 
 "2019-04-19","ZUCCHINI","JASMINE","2","50","1","First zucchini tray seeding."
 "2019-05-03","ZUCCHINI","JASMINE","2","50","1","Another zucchini tray seeding."
-"2019-05-13","ZUCCHINI","JASMINE","2","50","1",""
-"2019-05-31","ZUCCHINI","GHANA","3","50","1",""
 "2019-06-13","ZUCCHINI","GHANA","3","50","1","Last zucchini tray seeding."
 
 "2019-02-19","LETTUCE-ICEBERG","CHUAU","3","72","1","First lettuce tray seeding."
 "2019-03-04","LETTUCE-ICEBERG","GHANA","4","72","1","Another lettuce tray seeding."
 "2019-03-29","LETTUCE-ICEBERG","JASMINE","2","128","1",""
 "2019-05-24","LETTUCE-ICEBERG","CHUAU","2","128","1",""
-"2019-06-05","LETTUCE-ICEBERG","GHANA","2","128","1",""
-"2019-06-20","LETTUCE-ICEBERG","JASMINE","2","128","1",""
-"2019-07-05","LETTUCE-ICEBERG","CHUAU","4","128","1",""
-"2019-07-13","LETTUCE-ICEBERG","GHANA","4","128","1",""
-"2019-07-17","LETTUCE-ICEBERG","JASMINE","4","128","1",""
-"2019-07-25","LETTUCE-ICEBERG","CHUAU","2","128","1",""
-"2019-08-07","LETTUCE-ICEBERG","GHANA","2","128","1",""
 "2019-08-14","LETTUCE-ICEBERG","JASMINE","3","128","1",""
 "2019-08-29","LETTUCE-ICEBERG","CHUAU","2","128","1","Last lettuce tray seeding."
+
+# Add few lines with 0 trays to test filtering.
+"2019-07-05","LETTUCE-ICEBERG","CHUAU","0","128","1","No trays for testing."
+"2019-06-20","LETTUCE-ICEBERG","JASMINE","0","128","1","No trays for testing."
+"2019-08-07","LETTUCE-ICEBERG","GHANA","0","128","1","No trays for testing."

@@ -1,0 +1,39 @@
+# Sample Data for transplanting.
+# 
+# The data in this file creates tray seedings that are then transplanted.
+# Thus, these crops will appear in the sample database in a variety 
+# of ways.
+#  - Some will be fully transplanted (i.e. all trays)
+#  - Some will be partially transplanted (i.e. some trays remain in greenhouse)
+#  - Some will used multiple transplant operations to move all trays.
+#
+# Format:
+#
+# Each pair of lines represents a tray seeding followed by a transplanting and
+# contains the following comma delimited information:
+#   ts_date,ts_cropName,ts_locationName,ts_trays,ts_traySize,ts_seedsPerCell,ts_comment
+#   tx_date,tx_trays,tx_bed_feet,tx_bed_width,tx_rows_per_bed,tx_location_count,tx_locations...,tx_locations...,tx_comment
+#
+# Anything following a # on a line is a considered a comment.
+# Thus, names and descriptions cannot contain #
+# Blank Lines are ignored.
+
+THIS FILE IS NOT YET COMPLETE... 
+TRANSPLANTING INFORMATION STILL NEEDS TO BE ADDED...
+SOME SHOULD BE A COMPLETE TRANSPLANT, 
+SOME SHOULD HAVE MULTIPLE TRANSPLANT OPERATIONS
+SOME SHOULD BE A PARTIAL TRANSPLANT, LEAVING SOME TRAYS
+
+"2019-06-27","BROCCOLI","GHANA","9","50","1","Will be transplanted."
+"2019-07-25","BROCCOLI","GHANA","11","128","1","Will be transplanted."
+
+"2019-03-25","PEPPERS-BELL","JASMINE","2","128","1","Will be transplanted."
+"2019-07-12","CAULIFLOWER","CHUAU","6","128","1","Will be transplanted."
+
+"2019-05-13","ZUCCHINI","JASMINE","2","50","1","Will be transplanted."
+"2019-05-31","ZUCCHINI","GHANA","3","50","1","Will be transplanted."
+
+"2019-06-05","LETTUCE-ICEBERG","GHANA","2","128","1","Will be transplanted."
+"2019-07-13","LETTUCE-ICEBERG","GHANA","4","128","1","Will be transplanted."
+"2019-07-17","LETTUCE-ICEBERG","JASMINE","4","128","1","Will be transplanted."
+"2019-07-25","LETTUCE-ICEBERG","CHUAU","2","128","1","Will be transplanted."
