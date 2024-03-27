@@ -11,6 +11,7 @@ drush
 entrypoints
 farmdata
 farmos
+FAVA
 getopt
 gids
 isready
