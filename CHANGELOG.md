@@ -1,3 +1,12 @@
+## [3.3.5](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.3.4...v3.3.5) (2024-06-10)
+
+
+### Fixes
+
+* adds equipment assets that have no parents ([#51](https://github.com/FarmData2/FD2-SampleDBs/issues/51)) ([abb720e](https://github.com/FarmData2/FD2-SampleDBs/commit/abb720e604e75e55c33e0ce04a30b0b3ed7463f0)), closes [#298](https://github.com/FarmData2/FD2-SampleDBs/issues/298)
+* adds equipment assets that have no parents ([#53](https://github.com/FarmData2/FD2-SampleDBs/issues/53)) ([f4bbe06](https://github.com/FarmData2/FD2-SampleDBs/commit/f4bbe062de99960bac6f330aa90758f1ee409c5b)), closes [#298](https://github.com/FarmData2/FD2-SampleDBs/issues/298)
+* adds equipment category 'Category' as parent for categories ([#50](https://github.com/FarmData2/FD2-SampleDBs/issues/50)) ([c866528](https://github.com/FarmData2/FD2-SampleDBs/commit/c866528350390abd63064e3bc48f59b29441f13a))
+
 ## [3.3.4](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.3.3...v3.3.4) (2024-04-16)
 
 
