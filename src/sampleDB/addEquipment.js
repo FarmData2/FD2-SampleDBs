@@ -3,7 +3,7 @@ import * as farmosUtil from "../library/farmosUtil/farmosUtil.js";
 
 import { basename, dirname } from "path";
 import { fileURLToPath } from "url";
-import { LocalStorage } from 'node-localstorage';
+import { LocalStorage } from "node-localstorage";
 
 /*
  * Set the name of the CSV file to be processed and the
@@ -28,7 +28,7 @@ const pass = "admin";
  * Get a local storage object that we'll use to simulate the
  * browser's localStorage and sessionStorage when running in node.
  */
-let ls = new LocalStorage('scratch');
+let ls = new LocalStorage("scratch");
 
 /*
  * Get a fully initialized and logged in instance of the farmOS.js
@@ -61,27 +61,55 @@ let categoryName = null;
  */
 async function processRow(row) {
   if (row[0] != "") {
-    console.log("  Adding " + row[0] + "...");
-    const categoryParent = farm.asset.create({
-      type: "asset--equipment",
-      attributes: {
-        name: row[0],
-        notes: row[1],
-      },
-    });
+    if (row.length == 1) {
+      console.log("  Adding equipment " + row[0] + ", which has no parents...");
+      const equipment = farm.asset.create({
+        type: "asset--equipment",
+        attributes: {
+          name: row[0],
+        },
+      });
+    } else if (row.length == 4) {
+      console.log("  Adding equipment " + row[0] + ", which has no parents...");
+      const equipment = farm.asset.create({
+        type: "asset--equipment",
+        attributes: {
+          name: row[0],
+          manufacturer: row[1],
+          model: row[2],
+          notes: row[3],
+        },
+      });
+    } else {
+      console.log("  Adding " + row[0] + "...");
+      const equipment = farm.asset.create({
+        type: "asset--equipment",
+        attributes: {
+          name: row[0],
+          notes: row[1],
+        },
+      });
+      categoryParentId = equipment.id;
+      categoryParentName = row[0];
+    }
 
     try {
-      const result = await farm.asset.send(categoryParent);
-      categoryParentId = result.id;
-      categoryParentName = row[0];
+      const result = await farm.asset.send(equipment);
     } catch (e) {
       console.log("API error sending " + row[0]);
       console.log(e);
       process.exit(1);
     }
     console.log("  Added.");
+    
   } else if (row[1] != "") {
-    console.log("  Adding equipment category " + row[1] + " to category " + categoryParentName  + "...");
+    console.log(
+      "  Adding equipment category " +
+        row[1] +
+        " to category " +
+        categoryParentName +
+        "..."
+    );
     const category = farm.asset.create({
       type: "asset--equipment",
       attributes: {
