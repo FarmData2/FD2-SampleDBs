@@ -1,22 +1,35 @@
 # Sample Data for the equipment assets
 #
-# Format:
-#
 # Each line represents either a category of equipment or 
 # any equipment asset.
+#
+# Format:
+#
+# A left justified line creates an equipment asset with no parent 
+# (e.g. Rake or Shovel) or it creates 'Category' which is the parent 
+# of all categories of equipment
+#
+# A line beginning with a single comma:
+#   Creates an equipment category with its parent being 'Category' that it 
+#   appears under.
+#
+# A line beginning with two commas:
+#   Creates an equipment asset and sets its parent to the equipment 
+#   category that it appears under (i.e. General is the parent of Tractor)
 #
 # Equipment categories have the format:
 #   category name,category description.
 #
-# Equipment within a category are listed immediately following its category
-# and have the following comma delimited information:
-#   ,name,manufacturer,model,description
+# Equipment assets have the following comma delimited information:
+#   name,manufacturer,model,description
 #
 # Anything following a # on a line is a considered a comment.
 # Thus, names and descriptions cannot contain #
 # Blank Lines are ignored.
 
-Category, Parent of all categories
+Rake,Company A,9871,A garden rake.
+Shovel,
+Category,Parent of all categories
 ,General,Equipment used for a variety of operations.
 ,,Tractor,Company G,468,A standard tractor.
 ,,Small Tractor,Company I,987,A compact tractor.
