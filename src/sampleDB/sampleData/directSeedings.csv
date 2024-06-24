@@ -1,0 +1,46 @@
+# Sample Data for direct seedings.
+#
+# Format:
+#
+# Each line represents a direct seeding with the following comma delimited information:
+#   "date","cropName","locationName;bed1;bed2;...","bedFeet","rowsPerBed","bedWidth","equipment1;equipment2;...","depth","speed","comment"
+#
+# Anything following a # on a line is a considered a comment.
+# Thus, names and descriptions cannot contain #
+# Blank Lines are ignored.
+
+"2019-02-13","ARUGULA","A","100","1","60","Tractor;Seeding Drill","4","2","The only Arugula."
+
+"2019-05-27","BEAN","A","90","2","48","Tractor;Seeding Drill","2","3","The first bean."
+"2019-06-24","BEAN","B","90","2","48","Tractor;Seeding Drill","2","3","Another bean."
+"2019-07-29","BEAN","C","90","3","48","Tractor;Seeding Drill","2","3","Another bean."
+"2019-08-05","BEAN","D","60","2","48","Tractor;Seeding Drill","2","3","The last bean."
+
+"2019-03-25","HERB-CILANTRO","GHANA;GHANA-1","15","3","36","Portable Broadcaster","0","0","The first cilantro."
+"2019-04-19","HERB-CILANTRO","JASMINE","12","5","36","Portable Broadcaster","0","0",""
+"2019-05-22","HERB-CILANTRO","E","20","3","36","","","","No equipment."
+"2019-06-24","HERB-CILANTRO","F","30","3","36","","","","No equipment."
+"2019-07-02","HERB-CILANTRO","G","30","3","36","","","","No equipment."
+"2019-08-13","HERB-CILANTRO","E","30","3","36","","","","No equipment."
+"2019-09-04","HERB-CILANTRO","CHUAU;CHUAU-1","10","3","35","Portable Broadcaster","0","0","The last cilantro."
+
+"2019-03-25","LETTUCE-MES MIX","GHANA;GHANA-3","88","3","36","Small Tractor;Planter","3","5","The first mes mix."
+"2019-04-12","LETTUCE-MES MIX","A","100","3","48","Tractor;Planter","3","5",""
+"2019-05-07","LETTUCE-MES MIX","A","123","3","48","Tractor;Planter","3","5",""
+"2019-06-05","LETTUCE-MES MIX","B","126","3","48","Tractor;Planter","3","5",""
+"2019-07-02","LETTUCE-MES MIX","B","99","3","46","Tractor;Planter","3","5",""
+"2019-08-05","LETTUCE-MES MIX","C","200","3","48","Tractor;Planter","3","5",""
+"2019-09-04","LETTUCE-MES MIX","CHUAU;CHUAU-2;CHUAU-3","88","5","36","Small Tractor;Planter","3","5",
+"2019-10-04","LETTUCE-MES MIX","CHUAU;CHUAU-4","88","5","36","Small Tractor;Planter","3","5",
+
+"2019-05-29","POTATO-SWEET","E","1000","1","60","Tractor;Seeding Drill","4","2","The first sweet potato."
+"2019-06-06","POTATO-SWEET","E","230","1","60","Tractor;Seeding Drill","4","2","The first sweet potato."
+
+"2019-02-04","RADISH","GHANA;GHANA-2","35","3","36","Small Tractor;Planter","2","1","The first radish."
+"2019-04-01","RADISH","GHANA;GHANA-4","100","5","36","Small Tractor;Planter","2","1",""
+"2019-05-02","RADISH","D","25","3","48","Tractor;Planter","2","4",""
+"2019-06-05","RADISH","E","25","3","48","Tractor;Planter","2","4",""
+"2019-08-05","RADISH","F","45","3","48","Tractor;Planter","2","4",""
+"2019-09-04","RADISH","CHUAU;CHUAU-5","35","3","36","Small Tractor;Planter","2","1","The last radish."
+
+"2019-08-05","RADISH-DAIKON","G","44","3","36","Small Tractor;Planter","2","1","The only daikon radish."
