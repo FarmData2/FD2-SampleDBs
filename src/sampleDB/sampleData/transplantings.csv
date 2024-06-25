@@ -1,0 +1,55 @@
+# Sample Data for transplanting.
+# 
+# The data in this file creates tray seedings that are then transplanted.
+# Thus, these crops will appear in the sample database in a variety 
+# of ways.
+#  - Some will be fully transplanted (i.e. all trays)
+#  - Some will be partially transplanted (i.e. some trays remain in greenhouse)
+#  - Some will used multiple transplant operations to move all trays.
+#
+# Format:
+#
+# The lines represent a tray seeding followed by one or more transplanting operations.
+# The lines contains the following comma delimited information:
+#   "ts_date","ts_cropName","ts_locationName","ts_trays","ts_traySize","ts_seedsPerCell","ts_comment"
+#   ,"tx_date","tx_trays","tx_bed_feet","tx_bed_width","tx_rows_per_bed","tx_location;tx_bed1;tx_bed2;...","tx_equipment1;tx_equipment2;...","tx_depth","tx_speed","tx_comment"
+#
+# The tray seeding will be added to the database and then transplanted.
+#
+# Anything following a # on a line is a considered a comment.
+# Thus, names and descriptions cannot contain #
+# Blank Lines are ignored.
+
+"2019-06-27","BROCCOLI","GHANA","9","50","1","Will be transplanted."
+,"2019-07-17","9","300","36","2","A","Shovel","2","0","Transplanted all trays in one go."
+
+"2019-07-25","BROCCOLI","GHANA","11","128","1","Will be transplanted."
+,"2019-08-15","6","200","36","2","B","Shovel","2","0","Transplanting 6 trays."
+,"2019-08-16","5","175","36","2","B","Shovel","2","0","Transplanted the remaining 5 trays."
+
+"2019-03-25","PEPPERS-BELL","JASMINE","2","128","1","Will be transplanted."
+,"2019-04-15","2","150","48","1","ALF;ALF-1","Small Tractor;Planter","2","3","Transplanted with a bed."
+
+"2019-07-12","CAULIFLOWER","CHUAU","6","128","1","Will be transplanted."
+,"2019-08-02","4","300","48","2","B","Tractor;Planter","3","5","Transplanted some but not all."
+
+"2019-05-13","ZUCCHINI","JASMINE","2","50","1","Will be transplanted."
+,"2019-05-03","2","150","36","1","CHUAU;CHUAU-1","Shovel","4","0","Transplanted to greenhouse bed."
+
+"2019-05-31","ZUCCHINI","GHANA","3","50","1","Will be transplanted."
+,"2019-05-21","3","200","36","1","C","","","","Transplanted all trays with no equipment."
+
+"2019-06-05","LETTUCE-ICEBERG","GHANA","7","128","1","Will be transplanted."
+,"2019-06-25","2","100","48","3","D","Tractor;Planter","3","4","Transplanted 2 of 7 trays."
+,"2019-06-26","2","100","48","3","D","Tractor;Planter","3","4","Transplanted 2 of remaining 5 trays."
+,"2019-06-26","2","100","48","3","D","Tractor;Planter","3","4","Transplanted 2 of remaining 3 trays."
+,"2019-06-26","1","50","48","3","D","Tractor;Planter","3","4","Transplanted last remaining tray."
+
+"2019-07-13","LETTUCE-ICEBERG","GHANA","8","128","1","Will be transplanted."
+,"2019-08-03","8","1000","36","2","ALF;ALF-1;ALF-2","","","","Transplanted with 2 beds and no equipment."
+
+"2019-07-17","LETTUCE-ICEBERG","JASMINE","4","128","1","Will be transplanted."
+,"2019-08-07","2","150","36","2","E","","","","Transplanted some trays but not all with no equipment."
+
+"2019-07-25","LETTUCE-ICEBERG","CHUAU","2","128","1","Will be transplanted."
+,"2019-08-15","2","150","36","2","CHUAU;CHUAU-1;CHUAU-3","Shovel","4","0","Transplanted in greenhouse with 2 beds."
