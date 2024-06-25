@@ -33,12 +33,12 @@ Category,Parent of all categories
 ,General,Equipment used for a variety of operations.
 ,,Tractor,Company G,468,A standard tractor.
 ,,Small Tractor,Company I,987,A compact tractor.
-#,Tillage,Equipment used exclusively for tillage.
-#,,Bed Shaper,Company A,123,A bed shaper.
-#,,Chisel Plow,Company B,234,A chisel plow.
-#,,Rotary Cultivator,Company C,456,A rotary cultivator.
-#,,Disk,Company D,789,A disc cultivator.
-#,,Harrow,Company E,135,A harrow.
+,Tillage,Equipment used exclusively for tillage.
+,,Bed Shaper,Company A,123,A bed shaper.
+,,Chisel Plow,Company B,234,A chisel plow.
+,,Rotary Cultivator,Company C,456,A rotary cultivator.
+,,Disk,Company D,789,A disc cultivator.
+,,Harrow,Company E,135,A harrow.
 ,Seeding,Equipment used exclusively for Seeding.
 ,,Tow Behind Broadcaster,Company J,876,A broadcast seed spreader.
 ,,Portable Broadcaster,Company K, 765,A chest mounted portable seed spreader.
