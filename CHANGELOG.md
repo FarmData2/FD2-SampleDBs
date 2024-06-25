@@ -1,3 +1,12 @@
+## [3.4.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.3.5...v3.4.0) (2024-06-25)
+
+
+### Features
+
+* adds direct seedings to sample database ([#54](https://github.com/FarmData2/FD2-SampleDBs/issues/54)) ([4d854a5](https://github.com/FarmData2/FD2-SampleDBs/commit/4d854a525e2394f3e5f2d675520eb80ee0c2ebaf))
+* adds equipment for tillage events ([#56](https://github.com/FarmData2/FD2-SampleDBs/issues/56)) ([9009cea](https://github.com/FarmData2/FD2-SampleDBs/commit/9009ceae09a3e4a4877b690512dc88d6e0d020ba))
+* adds transplantings to the sample database ([#55](https://github.com/FarmData2/FD2-SampleDBs/issues/55)) ([9c4d6cc](https://github.com/FarmData2/FD2-SampleDBs/commit/9c4d6cc7afb8c904d7746e095001765479971911))
+
 ## [3.3.5](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.3.4...v3.3.5) (2024-06-10)
 
 
