@@ -25,6 +25,7 @@ rushstack
 setsid
 shellcheck
 toplevel
+transplantings
 vite
 XDEBUG
 Zulip

@@ -54,4 +54,17 @@ sed -i "s/@libs\/farmosUtil\/farmosUtil/..\/farmosUtil\/farmosUtil.js/g" "direct
 error_check "    Unable to update farmosUtil import."
 echo "  Copied."
 
+
+# Get the directSeeding library
+echo "  Copying transplanting/lib.js to $PWD/transplanting/..."
+rm -rf transplanting
+error_check "    Unable to remove existing transplanting directory." 
+mkdir transplanting
+error_check "    Unable to create new transplanting directory."
+cp "$FD2_DIR/modules/farm_fd2/src/entrypoints/transplanting/lib.js" transplanting/
+error_check "    Unable to copy transplanting/lib.js FarmData2 repo."
+sed -i "s/@libs\/farmosUtil\/farmosUtil/..\/farmosUtil\/farmosUtil.js/g" "transplanting/lib.js"
+error_check "    Unable to update farmosUtil import."
+echo "  Copied."
+
 echo "Built."
