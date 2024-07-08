@@ -20,10 +20,10 @@
 
 A,field,Field A
 ALF,field,Field ALF
-,ALF-1,bed,Bed ALF-1 in Field ALF
-,ALF-2,bed,Bed ALF-2 in Field ALF
-,ALF-3,bed,Bed ALF-3 in Field ALF
-,ALF-4,bed,Bed ALF-4 in Field ALF
+,ALF-1,bed,Bed ALF-1
+,ALF-2,bed,Bed ALF-2
+,ALF-3,bed,Bed ALF-3 - Empty for testing
+,ALF-4,bed,Bed ALF-4 - Empty for testing
 B,field,Field B
 C,field,Field C
 CHUAU,greenhouse,The CHUAU Greenhouse
@@ -41,4 +41,7 @@ GHANA,greenhouse,The GHANA Greenhouse
 ,GHANA-2,bed,Bed GHANA-2 in GHANA Greenhouse
 ,GHANA-3,bed,Bed GHANA-3 in GHANA Greenhouse
 ,GHANA-4,bed,Bed GHANA-4 in GHANA Greenhouse
+H,field,Field H - Empty for testing
+,H-1,bed,Bed H-1 - Empty for testing
+,H-2,bed,Bed H-2 - Empty for testing
 JASMINE,greenhouse,The JASMINE Greenhouse
