@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.4.0...v3.4.1) (2024-07-09)
+
+
+### Fixes
+
+* adds empty field H and empty beds H-1 and H-2 ([#58](https://github.com/FarmData2/FD2-SampleDBs/issues/58)) ([5f76391](https://github.com/FarmData2/FD2-SampleDBs/commit/5f763917455b0f19b5a2e28d42d4cc3edcab7ddc))
+
 ## [3.4.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.3.5...v3.4.0) (2024-06-25)
 
 
