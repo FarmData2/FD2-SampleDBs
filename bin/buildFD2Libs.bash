@@ -55,7 +55,7 @@ error_check "    Unable to update farmosUtil import."
 echo "  Copied."
 
 
-# Get the directSeeding library
+# Get the transplanting library
 echo "  Copying transplanting/lib.js to $PWD/transplanting/..."
 rm -rf transplanting
 error_check "    Unable to remove existing transplanting directory." 
