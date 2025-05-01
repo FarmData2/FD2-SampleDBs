@@ -1,3 +1,10 @@
+## [3.5.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.4.1...v3.5.0) (2025-05-01)
+
+
+### Features
+
+* add area J with no beds, no plants ([#63](https://github.com/FarmData2/FD2-SampleDBs/issues/63)) ([7ca8817](https://github.com/FarmData2/FD2-SampleDBs/commit/7ca8817b236d78c5b8bce590b850f2734055c781)), closes [#62](https://github.com/FarmData2/FD2-SampleDBs/issues/62)
+
 ## [3.4.1](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.4.0...v3.4.1) (2024-07-09)
 
 
