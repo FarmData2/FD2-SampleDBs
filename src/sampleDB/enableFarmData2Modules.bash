@@ -23,6 +23,11 @@ docker exec -it fd2_farmos drush en farm_inventory -y
 error_check
 echo "  Enabled."
 
+echo "  Enabling the farmOS Transplanting Module..."
+docker exec -it fd2_farmos drush en farm_transplanting -y
+error_check
+echo "  Enabled."
+
 echo "  Enabling the Drupal Views UI Module..."
 docker exec -it fd2_farmos drush en views_ui -y
 error_check
