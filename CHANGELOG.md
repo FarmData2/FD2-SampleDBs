@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.5.0...v3.5.1) (2025-06-06)
+
+
+### Fixes
+
+* enables the farmOS transplanting module ([#64](https://github.com/FarmData2/FD2-SampleDBs/issues/64)) ([bf70b03](https://github.com/FarmData2/FD2-SampleDBs/commit/bf70b0373a2508ca053219e6208e0694765b156c))
+
 ## [3.5.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.4.1...v3.5.0) (2025-05-01)
 
 
