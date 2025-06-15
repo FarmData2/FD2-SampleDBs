@@ -26,9 +26,10 @@ rm -rf farmosUtil
 error_check "    Unable to remove existing farmosUtil directory." 
 mkdir farmosUtil
 error_check "    Unable to create new farmosUtil directory."
-cp "$FD2_DIR/library/farmosUtil/farmosUtil.*.js" farmosUtil/
+cp "$FD2_DIR"/library/farmosUtil/*.js farmosUtil/
+#cp "$FD2_DIR/library/farmosUtil/*.js" farmosUtil/
 error_check "    Unable to copy farmosUtil.js FarmData2 repo."
-rm "$FD2_DIR/library/farmosUtil/farmosUtil.*.unit.cy.js"
+rm farmosUtil/farmosUtil.*.unit.cy.js
 echo "  Copied."
 
 # Get the traySeeding library
