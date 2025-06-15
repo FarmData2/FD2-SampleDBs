@@ -1,3 +1,10 @@
+## [3.6.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.5.1...v3.6.0) (2025-06-15)
+
+
+### Features
+
+* updates for farmosUtil refactor and enables field UI ([#65](https://github.com/FarmData2/FD2-SampleDBs/issues/65)) ([35fcb43](https://github.com/FarmData2/FD2-SampleDBs/commit/35fcb43ba7246329f4bcd54e76a2d59b05acd6dc))
+
 ## [3.5.1](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.5.0...v3.5.1) (2025-06-06)
 
 
