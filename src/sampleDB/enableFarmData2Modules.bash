@@ -33,6 +33,11 @@ docker exec -it fd2_farmos drush en views_ui -y
 error_check
 echo "  Enabled."
 
+echo "  Enabling the Drupal Field UI Module..."
+docker exec -it fd2_farmos drush en field_ui -y
+error_check
+echo "  Enabled."
+
 echo "  Enabling farm_fd2..."
 docker exec -it fd2_farmos drush en farm_fd2 -y
 error_check
