@@ -3,7 +3,7 @@ import * as farmosUtil from "../library/farmosUtil/farmosUtil.js";
 
 import { basename, dirname } from "path";
 import { fileURLToPath } from "url";
-import { LocalStorage } from 'node-localstorage';
+import { LocalStorage } from "node-localstorage";
 
 /*
  * Set the name of the CSV file to be processed and the
@@ -28,7 +28,7 @@ const pass = "admin";
  * Get a local storage object that we'll use to simulate the
  * browser's localStorage and sessionStorage when running in node.
  */
-let ls = new LocalStorage('scratch');
+let ls = new LocalStorage("scratch");
 
 /*
  * Get a fully initialized and logged in instance of the farmOS.js
@@ -39,7 +39,7 @@ const farm = await farmosUtil.getFarmOSInstance(URL, client, user, pass, ls);
 /*
  * Get any farmos id maps that we need for processing the data.
  */
-//const usernameMap = await farmosUtil.getUsernameToUserMap(farm);
+const unitMap = await farmosUtil.getUnitToTermMap(farm);
 
 /*
  * Kick off the the pipeline that reads the csv file and passes
@@ -83,6 +83,10 @@ async function processRow(row) {
     console.log(
       "  Adding crop " + row[1] + " to crop family " + cropFamilyName + "..."
     );
+
+    const harvestUnit = await getHarvestUnit(row, 2);
+    //const unitConversions = getUnitConversions(row, 3);
+
     const crop = farm.term.create({
       type: "taxonomy_term--plant_type",
       attributes: {
@@ -92,6 +96,8 @@ async function processRow(row) {
         type: "taxonomy_term--crop_family",
         id: cropFamilyId,
       },
+      fd2_harvest_unit: harvestUnit,
+      //fd2_unit_conversions: unitConversions,
     });
 
     try {
@@ -107,15 +113,18 @@ async function processRow(row) {
   } else if (row[2] != "") {
     console.log(
       "  Adding crop " +
-      parentCropName +
-      "-" +
-      row[2] +  
+        parentCropName +
+        "-" +
+        row[2] +
         " to crop family " +
         cropFamilyName +
         " with parent crop " +
         parentCropName +
         "..."
     );
+
+    const harvestUnit = await getHarvestUnit(row, 3);
+
     const crop = farm.term.create({
       type: "taxonomy_term--plant_type",
       attributes: {
@@ -125,6 +134,7 @@ async function processRow(row) {
         type: "taxonomy_term--crop_family",
         id: cropFamilyId,
       },
+      fd2_harvest_unit: harvestUnit,
     });
     crop.relationships.parent.push({
       type: "taxonomy_term--plant_type",
@@ -144,4 +154,51 @@ async function processRow(row) {
     console.log(row);
     process.exit(1);
   }
+}
+
+async function getHarvestUnit(row, index) {
+  const harvestUnitName = row[index];
+  console.log("  Getting unit " + harvestUnitName + "...");
+
+  let harvestUnit = unitMap.get(harvestUnitName);   
+  if (!harvestUnit) {
+    console.log("  ** Unit not found");
+    harvestUnit = await makeUnit(harvestUnitName);
+  }
+
+  console.log("  " + harvestUnitName + " = " + harvestUnit.id);
+  
+  return {
+    type: "taxonomy_term--unit",
+    id: harvestUnit.id
+  };
+
+  console.log("  Got unit.");
+}
+
+async function makeUnit(unitName) {
+  console.log("  Adding unit " + unitName + "...");
+  const unit = farm.term.create({
+    type: "taxonomy_term--unit",
+    attributes: {
+      name: unitName,
+      description: "The " + unitName + " unit.",
+    },
+  });
+
+  try {
+    const result = await farm.term.send(unit);
+    unitMap.set(unitName,result);
+    console.log("  Added unit");
+    
+    return result.id;
+  } catch (e) {
+    console.log("API error sending unit " + unitName);
+    console.log(e);
+    process.exit(1);
+  }
+}
+
+function getUnitConversions(row, startIndex) {
+  return [];
 }
