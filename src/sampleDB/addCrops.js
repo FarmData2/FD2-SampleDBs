@@ -4,6 +4,7 @@ import * as farmosUtil from "../library/farmosUtil/farmosUtil.js";
 import { basename, dirname } from "path";
 import { fileURLToPath } from "url";
 import { LocalStorage } from "node-localstorage";
+import { symlinkSync } from "fs";
 
 /*
  * Set the name of the CSV file to be processed and the
@@ -39,7 +40,8 @@ const farm = await farmosUtil.getFarmOSInstance(URL, client, user, pass, ls);
 /*
  * Get any farmos id maps that we need for processing the data.
  */
-const unitMap = await farmosUtil.getUnitToTermMap(farm);
+farmosUtil.clearCachedUnits();
+const unitMap = await farmosUtil.getUnitToTermMap();
 
 /*
  * Kick off the the pipeline that reads the csv file and passes
@@ -86,6 +88,14 @@ async function processRow(row) {
 
     const harvestUnit = await getHarvestUnit(row, 2);
     //const unitConversions = getUnitConversions(row, 3);
+
+    /*
+     * TODO: IMPLEMENT UNIT CONVERSIONS
+     *       CONSIDER HAVING PARENT CATEGORY FOR ADDED UNITS.
+     *         E.G. COUNT FOR BUNCHES
+     *         E.G. WEIGHT FOR POUNDS
+     *         ETC.
+     */
 
     const crop = farm.term.create({
       type: "taxonomy_term--plant_type",
@@ -158,26 +168,24 @@ async function processRow(row) {
 
 async function getHarvestUnit(row, index) {
   const harvestUnitName = row[index];
-  console.log("  Getting unit " + harvestUnitName + "...");
-
+  console.log("    Getting unit " + harvestUnitName + "...");
   let harvestUnit = unitMap.get(harvestUnitName);   
   if (!harvestUnit) {
-    console.log("  ** Unit not found");
     harvestUnit = await makeUnit(harvestUnitName);
   }
 
-  console.log("  " + harvestUnitName + " = " + harvestUnit.id);
-  
-  return {
+  const unit = {
     type: "taxonomy_term--unit",
     id: harvestUnit.id
   };
 
-  console.log("  Got unit.");
+  console.log("    Got unit.");
+
+  return unit;
 }
 
 async function makeUnit(unitName) {
-  console.log("  Adding unit " + unitName + "...");
+  console.log("      Adding unit " + unitName + "...");
   const unit = farm.term.create({
     type: "taxonomy_term--unit",
     attributes: {
@@ -189,7 +197,7 @@ async function makeUnit(unitName) {
   try {
     const result = await farm.term.send(unit);
     unitMap.set(unitName,result);
-    console.log("  Added unit");
+    console.log("      Added unit");
     
     return result.id;
   } catch (e) {
