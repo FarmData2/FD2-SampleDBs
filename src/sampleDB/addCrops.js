@@ -87,15 +87,9 @@ async function processRow(row) {
     );
 
     const harvestUnit = await getHarvestUnit(row, 2);
-    //const unitConversions = getUnitConversions(row, 3);
+    const unitConversions = getUnitConversions(row, 3);
 
-    /*
-     * TODO: IMPLEMENT UNIT CONVERSIONS
-     *       CONSIDER HAVING PARENT CATEGORY FOR ADDED UNITS.
-     *         E.G. COUNT FOR BUNCHES
-     *         E.G. WEIGHT FOR POUNDS
-     *         ETC.
-     */
+
 
     const crop = farm.term.create({
       type: "taxonomy_term--plant_type",
@@ -107,7 +101,7 @@ async function processRow(row) {
         id: cropFamilyId,
       },
       fd2_harvest_unit: harvestUnit,
-      //fd2_unit_conversions: unitConversions,
+      fd2_unit_conversions: unitConversions,
     });
 
     try {
@@ -134,6 +128,7 @@ async function processRow(row) {
     );
 
     const harvestUnit = await getHarvestUnit(row, 3);
+    const unitConversions = getUnitConversions(row, 4);
 
     const crop = farm.term.create({
       type: "taxonomy_term--plant_type",
@@ -145,6 +140,7 @@ async function processRow(row) {
         id: cropFamilyId,
       },
       fd2_harvest_unit: harvestUnit,
+      fd2_unit_conversions: unitConversions,
     });
     crop.relationships.parent.push({
       type: "taxonomy_term--plant_type",
@@ -168,7 +164,7 @@ async function processRow(row) {
 
 async function getHarvestUnit(row, index) {
   const harvestUnitName = row[index];
-  console.log("    Getting unit " + harvestUnitName + "...");
+  console.log("    Getting harvest unit " + harvestUnitName + "...");
   let harvestUnit = unitMap.get(harvestUnitName);   
   if (!harvestUnit) {
     harvestUnit = await makeUnit(harvestUnitName);
@@ -179,34 +175,29 @@ async function getHarvestUnit(row, index) {
     id: harvestUnit.id
   };
 
-  console.log("    Got unit.");
+  console.log("    Gotten.");
 
   return unit;
 }
 
-async function makeUnit(unitName) {
-  console.log("      Adding unit " + unitName + "...");
-  const unit = farm.term.create({
-    type: "taxonomy_term--unit",
-    attributes: {
-      name: unitName,
-      description: "The " + unitName + " unit.",
-    },
-  });
-
-  try {
-    const result = await farm.term.send(unit);
-    unitMap.set(unitName,result);
-    console.log("      Added unit");
-    
-    return result.id;
-  } catch (e) {
-    console.log("API error sending unit " + unitName);
-    console.log(e);
-    process.exit(1);
-  }
-}
-
 function getUnitConversions(row, startIndex) {
-  return [];
+  console.log("    Getting harvest unit conversions...");
+
+  const unitConversions = [];
+  while (row[startIndex]) {
+    const unitName= row[startIndex];
+    const unitConversion = {
+      type: "taxonomy_term--unit",      
+      id: unitMap.get(unitName).id,
+      meta: {
+        factor: Number(row[startIndex + 1]),
+      },
+    }
+
+    unitConversions.push(unitConversion);
+    startIndex += 2;
+  }
+  console.log("    Gotten.");
+
+  return unitConversions;
 }

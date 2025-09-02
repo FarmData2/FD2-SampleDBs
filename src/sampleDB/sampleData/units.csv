@@ -1,0 +1,25 @@
+# Sample Data for units.
+# Note: Required units are created by farm_fd2.install in the farm_fd2 module.
+#       The units created here would not necessarily exits in all FD2 instances.
+#
+# Format:
+#
+# Each line represents either a unit category or a unit
+#  - Lines with no leading comma represent a unit category.
+#    - Unit categories that do not exist in farm_fd2.install will be created.
+#  - Lines with a leading comma represent a child unit of 
+#  -   the most recent unit category.
+#
+# Anything following a # on a line is a considered a comment.
+# Thus, names and descriptions cannot contain #
+# Blank Lines are ignored.
+#
+# Units are created as taxonomy_term--unit terms.
+
+Count,Already exists in farm_fd2.install
+,BUNCH,A number of bunches.
+,EACH,A number of items.
+,HEAD,A number of heads.
+,TRAY,A number of trays.
+Weight,A parent term for units that are weights.
+,POUND,A number of pounds.

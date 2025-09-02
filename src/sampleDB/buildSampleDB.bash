@@ -53,6 +53,11 @@ node "$SCRIPT_DIR/addAreas.js"
 error_check
 echo ""
 
+# Add units
+node "$SCRIPT_DIR/addUnits.js"
+error_check
+echo ""
+
 # Add the crop families and crops
 node "$SCRIPT_DIR/addCrops.js"
 error_check
