@@ -1,3 +1,10 @@
+## [3.7.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.6.0...v3.7.0) (2025-09-02)
+
+
+### Features
+
+* add harvest units and conversion factors to plant type vocabulary terms ([#66](https://github.com/FarmData2/FD2-SampleDBs/issues/66)) ([b42beee](https://github.com/FarmData2/FD2-SampleDBs/commit/b42beee36517dd19418272d21006be51f63e02b3))
+
 ## [3.6.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.5.1...v3.6.0) (2025-06-15)
 
 
