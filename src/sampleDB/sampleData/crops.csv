@@ -23,13 +23,14 @@
 # (e.g. BEANS-DRY, CORN-DRY)
 # 
 # The line for each crop contains a comma delimited list with the following:
-#   - default units
-#   - a list of conversions for the crop (if any), each with 3 values:
+#   - default harvest units
+#   - a list of conversions for the crop (if any), each with 2 values:
 #      - new units - the name of the unit to convert to from the default.
 #      - factor - the conversion factor.
 #         - default value * factor = quantity in new unit.
+#   NOTE: Units used for the harvest unit or the new units must appear in units.csv.
 #
-# Crop families appear in farmOS in the oder listed in this file.
+# Crop families appear in farmOS in the order listed in this file.
 # Crops appear in farmOS in alphabetical order in their families or overall.
 #
 # Any line starting with # is a comment.
