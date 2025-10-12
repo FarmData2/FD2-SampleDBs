@@ -1,3 +1,10 @@
+## [3.7.1](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.7.0...v3.7.1) (2025-10-12)
+
+
+### Fixes
+
+* adds harvest log category ([#67](https://github.com/FarmData2/FD2-SampleDBs/issues/67)) ([2c71fac](https://github.com/FarmData2/FD2-SampleDBs/commit/2c71facf6080fc6ecdc068b2d602a4872a90cb1c))
+
 ## [3.7.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.6.0...v3.7.0) (2025-09-02)
 
 
