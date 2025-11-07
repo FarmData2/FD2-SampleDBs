@@ -6,16 +6,40 @@ All of the following documentation assumes that operations are performed within 
 
 ## Preliminaries
 
-Install the dependencies by:
-- Change into the `FD2-SampleDBs` directory
-- run `npm install`
+1. Ensure that the FarmData2 Development environment is up and running.
+   - `https://github.com/FarmData2/FarmData2/blob/development/INSTALL.md`
+2. Clone this repository into the home directory in the development environment alongside the FarmData2 repository.
+   - `cd ~`
+   - `git clone https://github.com/FarmData2/FD2-SampleDBs.git`
+3. Install the dependencies by:
+   - `cd ~/FD2-SampleDBs`
+   - `npm ci`
+4. Copy the useful libraries from the FarmData2 repository:
+   - `cd ~/FD2-SampleDBs`
+   - `bin/buildFD2Libs.bash`
 
-Ensure that the FarmData2 repository has also been cloned.
-- `git clone https://github.com/FarmData2/FarmData2.git`
+### Development Workflow
 
-Copy the useful libraries from the FarmData2 repository:
-- Change into the `FD2-SampleDBs` directory
-- `bin/buildFD2Libs.bash`
+To change, modify, update, add a database:
+
+1. Take care of [Preliminaries above](#preliminaries).
+2. Create and switch to a new feature branch from the `development` branch in the FD2-SampleDBs repository.
+3. Make database changes in your feature branch.
+4. [Build the database](#building-the-databases) with your changes.
+5. Create and switch to a new feature branch from `development` in the FarmData2 repository.
+6. [Manually Install the Database](#manually-installing-a-database).
+7. Use the farmOS instance to manually explore the database and ensure that your changes are as intended.  Make any corrections.
+8. Run the full FarmData2 test suite.
+   - `cd ~/FarmData2`
+   - `runAllTests.bash`
+9. Fix any tests that were broken by your database update.
+10. Commit the patched tests to your feature branch in the FarmData2 repo.
+11. Commit your changes to the Database to your feature branch in FD2-SampleDBs repo. Be sure to include:
+   - The changes you have made to the code.
+   - The newly created database files (e.g. `db.sample.tar.gz`)
+12. Ensure that both feature branches are up to date with their `development` branches.
+13. Push your feature branches.
+14. Create a pull request to the `development` branch in the appropriate upstream for each of your feature branches.
 
 ## Building the Databases
 
@@ -44,29 +68,10 @@ The `buildFD2libs.bash` command will ensure that the libraries from FarmData2 th
 
 The libraries should be maintained only from the FarmData2 repository. When new a library is updated in FarmData2 or added to FarmData2 and the changes are needed here the `buildFD2libs.bash` and `.gitignore` files should be updated and the `buildFD2libs.bash` script should be run again so that the changes are copied and adapted.
 
-### Development Workflow
+## Maintainers
 
-To change, modify, update, add a database:
-
-- Prerequisites:
-  - Fork the `FD2-SampleDBs` upstream repository
-  - Clone your fork into the FarmData2 Development Environment
-1. Ensure that your `development` branch is synchronized with the `upstream`
-2. Create a new feature branch from the `development` branch
-3. Make and test changes in your feature branch
-4. Run the appropriate script(s) to build the database
-5. Install and test that the new database works 
-   - See [Manually Installing a Database](#manually-installing-a-database) above
-6. Commit to your feature branch:
-   - The changes you have made to the code.
-   - The newly created database files (e.g. `db.base.tar.gz`)
-7. Pull and merge any new changes to the `development` branch into your feature branch
-8. Create a pull request to the `development` branch in the upstream
-
-A maintainer will:
-
-1. Review your pull request and provide feedback
-2. If/when appropriate squash merge your pull request into the `development` branch
+1. Review pull requests and provide feedback
+2. If/when appropriate squash merge pull request into the `development` branch
    - The squash merge commit message must be a conventional commit message.
      - See [Conventional Commits](https://conventionalcommits.org)
      - In addition, `BREAKING CHANGE:` must be included in the footer of the commit message to produce a breaking change.
