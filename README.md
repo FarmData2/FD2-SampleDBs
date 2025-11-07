@@ -23,22 +23,23 @@ All of the following documentation assumes that operations are performed within 
 To change, modify, update, add a database:
 
 1. Take care of [Preliminaries above](#preliminaries).
-2. Create a new feature branch from the `development` branch
-3. Make and test changes in your feature branch
-4. [Build the database](#building-the-databases).
-5. Create and switch to a new feature branch in the FarmData2 repository.
+2. Create and switch to a new feature branch from the `development` branch in the FD2-SampleDBs repository.
+3. Make database changes in your feature branch.
+4. [Build the database](#building-the-databases) with your changes.
+5. Create and switch to a new feature branch from `development` in the FarmData2 repository.
 6. [Manually Install the Database](#manually-installing-a-database).
-7. Use the farmOS instance to manually explore the database and ensure your changes are correct.  Make any corrections.
+7. Use the farmOS instance to manually explore the database and ensure that your changes are as intended.  Make any corrections.
 8. Run the full FarmData2 test suite.
    - `cd ~/FarmData2`
    - `runAllTests.bash`
 9. Fix any tests that were broken by your database update.
 10. Commit the patched tests to your feature branch in the FarmData2 repo.
-11. Commit your changes to the Database to your feature branch in FD2-SampleDBs repo. BGe sure to include:
+11. Commit your changes to the Database to your feature branch in FD2-SampleDBs repo. Be sure to include:
    - The changes you have made to the code.
    - The newly created database files (e.g. `db.sample.tar.gz`)
 12. Ensure that both feature branches are up to date with their `development` branches.
-8. Create a pull request to the `development` branch in the appropriate upstream for each of your feature branches.
+13. Push your feature branches.
+14. Create a pull request to the `development` branch in the appropriate upstream for each of your feature branches.
 
 ## Building the Databases
 
