@@ -1,3 +1,15 @@
+## [3.8.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.7.1...v3.8.0) (2026-01-15)
+
+
+### Documentation
+
+* improve clarity of README ([#68](https://github.com/FarmData2/FD2-SampleDBs/issues/68)) ([f0332f3](https://github.com/FarmData2/FD2-SampleDBs/commit/f0332f345c75dc0104e968256918045ed18b2c38))
+
+
+### Features
+
+* adds beds D-1 and D-2 to field D ([#69](https://github.com/FarmData2/FD2-SampleDBs/issues/69)) ([8880097](https://github.com/FarmData2/FD2-SampleDBs/commit/8880097c123b540dcb37e5a1879c66f60b12ce82)), closes [#553](https://github.com/FarmData2/FD2-SampleDBs/issues/553) [#554](https://github.com/FarmData2/FD2-SampleDBs/issues/554) [FarmData2/FarmData2#553](https://github.com/FarmData2/FarmData2/issues/553)
+
 ## [3.7.1](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.7.0...v3.7.1) (2025-10-12)
 
 
