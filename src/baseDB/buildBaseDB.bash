@@ -60,7 +60,7 @@ while [[ "$Y_N" != "n" && "$Y_N" != "N" ]]; do
 done
 
 # Delete the current database.
-echo "Deleting current databae..."
+echo "Deleting current database..."
 safe_cd "$HOME/FarmData2/docker/db"
 sudo rm -rf ./*
 error_check
@@ -81,19 +81,6 @@ while [[ ! "$STATUS" == *"accepting connections"* ]]; do
   STATUS=$(docker exec fd2_postgres pg_isready)
 done
 echo "  Up."
-
-# Reset the drupal settigns.php file
-echo "Resetting the drupal settings.php file..."
-docker exec -it fd2_farmos rm /opt/drupal/web/sites/default/settings.php 
-# no error_check here as the file may not exist.
-docker exec -it fd2_farmos cp /opt/drupal/web/sites/default/default.settings.php /opt/drupal/web/sites/default/settings.php
-error_check
-docker exec -it fd2_farmos chown www-data /opt/drupal/web/sites/default/settings.php 
-error_check
-docker exec -it fd2_farmos chgrp www-data /opt/drupal/web/sites/default/settings.php
-error_check
-sleep 10
-echo "  Reset."
 
 # Doing farmOS Configure Site
 echo "Configuring the farmOS site..."
