@@ -6,7 +6,7 @@ All of the following documentation assumes that operations are performed within 
 
 ## Preliminaries
 
-1. Ensure that the FarmData2 Development environment is up and running.
+1. Ensure that the FarmData2 Development environment is up and running in a Codespace.
    - `https://github.com/FarmData2/FarmData2/blob/development/INSTALL.md`
 2. Clone this repository into the home directory in the development environment alongside the FarmData2 repository.
    - `cd ~`
@@ -17,7 +17,10 @@ All of the following documentation assumes that operations are performed within 
 4. Copy the useful libraries from the FarmData2 repository:
    - `cd ~/FD2-SampleDBs`
    - `bin/buildFD2Libs.bash`
-
+5. Ensure you have write access to your origin repository:
+   - Create an appropriate GitHub PAT
+   - `export GITHUB_TOKEN=<your PAT>`
+     - Note; This is necessary because the default token in the codespace is scoped to only the repo from which the codespace was created.
 ### Development Workflow
 
 To change, modify, update, add a database:
