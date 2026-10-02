@@ -41,6 +41,7 @@ To change, modify, update, add a database:
    - The newly created database files (e.g. `db.sample.tar.gz`)
 12. Ensure that both feature branches are up to date with their `development` branches.
 13. Push your feature branches.
+   - This will require explicitly setting "GITHUB_TOKEN" to a token with permissions for both FarmData2 and FD2-SampleDBs.
 14. Create a pull request to the `development` branch in the appropriate upstream for each of your feature branches.
 
 ## Building the Databases
