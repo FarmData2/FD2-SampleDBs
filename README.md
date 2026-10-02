@@ -27,8 +27,10 @@ To change, modify, update, add a database:
 3. Make database changes in your feature branch.
 4. [Build the database](#building-the-databases) with your changes.
 5. Create and switch to a new feature branch from `development` in the FarmData2 repository.
-6. [Manually Install the Database](#manually-installing-a-database).
-7. Use the farmOS instance to manually explore the database and ensure that your changes are as intended.  Make any corrections.
+6. Install the newly built sample database from the FarmData2 repository.
+   - `cd ~/FarmData2`
+   - `installDB.bash --development --artifact db.sample.tar.gz`
+7. Use the farmOS instance to manually explore the database and ensure that your changes are as intended. Make any corrections.
 8. Run the full FarmData2 test suite.
    - `cd ~/FarmData2`
    - `runAllTests.bash`
@@ -50,7 +52,9 @@ The following scripts contained in the `src` directory are used to build the sam
 
 ## Installing a Database
 
-The `bin/installDB.bash` script can be used to install any of the compressed database in the `dist` directory. Running `installDB.bash` with no command line arguments displays a list of the available databases. Alternatively, the name of a `db.*.tar.gz` file in the `/dist` directory can be specified on the command line.
+Use FarmData2's `bin/installDB.bash` to install a locally built database from this repository. From the FarmData2 repository, run `installDB.bash --development` to choose an archive from `FD2-SampleDBs/dist`, or specify one with `installDB.bash --development --artifact db.sample.tar.gz`.
+
+The development install stages the selected archive for `installDB.bash --current` and does not change the branch's database release recorded in `.fd2dev/db.conf`. Cypress uses `--current` before a test run, so install the built sample archive with `--development` before running FarmData2 tests.
 
 ## Development
 
