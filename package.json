@@ -2,8 +2,7 @@
   "name": "fd2-sampledbs",
   "type": "module",
   "scripts": {
-    "printlog": "node bin/printFarmosLogs.js",
-    "install-db": "bin/installDB.bash"
+    "printlog": "node bin/printFarmosLogs.js"
   },
   "devDependencies": {
     "@saithodev/semantic-release-backmerge": "^3.2.0",
