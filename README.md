@@ -8,15 +8,13 @@ All of the following documentation assumes that operations are performed within 
 
 1. Ensure that the FarmData2 Development environment is up and running.
    - `https://github.com/FarmData2/FarmData2/blob/development/INSTALL.md`
-2. Clone this repository into the home directory in the development environment alongside the FarmData2 repository.
+2. Clone this repository into the home directory in the development environment as a sibling to the FarmData2 repository.
    - `cd ~`
    - `git clone https://github.com/FarmData2/FD2-SampleDBs.git`
 3. Install the dependencies by:
    - `cd ~/FD2-SampleDBs`
    - `npm ci`
-4. Copy the useful libraries from the FarmData2 repository:
-   - `cd ~/FD2-SampleDBs`
-   - `bin/buildFD2Libs.bash`
+4. If you have dependent changes in the FarmData2 be sure it has the branch containing the changes checked out.
 
 ### Development Workflow
 
@@ -27,6 +25,7 @@ To change, modify, update, add a database:
 3. Make database changes in your feature branch.
 4. [Build the database](#building-the-databases) with your changes.
 5. Create and switch to a new feature branch from `development` in the FarmData2 repository.
+   - If you have a feature branch in FarmData2 with dependent changes, use that feature branch instead of a new one.
 6. Install the newly built sample database from the FarmData2 repository.
    - `cd ~/FarmData2`
    - `installDB.bash --development --artifact db.sample.tar.gz`
