@@ -14,7 +14,7 @@ All of the following documentation assumes that operations are performed within 
 3. Install the dependencies by:
    - `cd ~/FD2-SampleDBs`
    - `npm ci`
-4. If you have dependent changes in the FarmData2 be sure it has the branch containing the changes checked out.
+4. If you have also made changes to `libraries/farmosUtil` in the FarmData2 switch to the branch containing those changes in the FarmData2 repository.
 
 ### Development Workflow
 
