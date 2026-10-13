@@ -28,7 +28,7 @@ To change, modify, update, add a database:
    - If you have a feature branch in FarmData2 with dependent changes, use that feature branch instead of a new one.
 6. Install the newly built sample database from the FarmData2 repository.
    - `cd ~/FarmData2`
-   - `installDB.bash --development --artifact db.sample.tar.gz`
+   - `installDB.bash --development --asset db.sample.tar.gz`
 7. Use the farmOS instance to manually explore the database and ensure that your changes are as intended. Make any corrections.
 8. Run the full FarmData2 test suite.
    - `cd ~/FarmData2`
