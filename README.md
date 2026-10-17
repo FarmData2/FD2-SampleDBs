@@ -24,11 +24,13 @@ To change, modify, update, add a database:
 2. Create and switch to a new feature branch from the `development` branch in the FD2-SampleDBs repository.
 3. Make database changes in your feature branch.
 4. [Build the database](#building-the-databases) with your changes.
+   - You will typically only need to rebuild the sampleDB.
+   - Only rebuild the baseDB if it is required by your changes.
 5. Create and switch to a new feature branch from `development` in the FarmData2 repository.
    - If you have a feature branch in FarmData2 with dependent changes, use that feature branch instead of a new one.
 6. Install the newly built sample database from the FarmData2 repository.
    - `cd ~/FarmData2`
-   - `installDB.bash --development --asset db.sample.tar.gz`
+   - `installDB.bash --development --asset=db.sample.tar.gz`
 7. Use the farmOS instance to manually explore the database and ensure that your changes are as intended. Make any corrections.
 8. Run the full FarmData2 test suite.
    - `cd ~/FarmData2`
@@ -41,7 +43,7 @@ To change, modify, update, add a database:
 12. Ensure that both feature branches are up to date with their `development` branches.
 13. Push your feature branches.
    - This will require explicitly setting "GITHUB_TOKEN" to a token with permissions for both FarmData2 and FD2-SampleDBs.
-   - e.g. `export GITHUB_TOKEN=ghp_TA2ax ... B2FV`
+   - e.g. `export GITHUB_TOKEN=ghp_TA2ax...B2FV`
 14. Create a pull request to the `development` branch in the appropriate upstream for each of your feature branches.
 15. Wait for a Maintainer to merge your changes to FD2-SampleDBs and create a new release.
 16. In FarmData2, `installDB.bash --latest` to update to the new release.
