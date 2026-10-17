@@ -1,3 +1,20 @@
+## [4.0.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.8.0...v4.0.0) (2026-10-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* Logs representing transplanting events now have log
+type `transplanting` instead of `activity`.
+
+### Features
+
+* creates new sampleDB using transplanting log type ([#72](https://github.com/FarmData2/FD2-SampleDBs/issues/72)) ([bc4037e](https://github.com/FarmData2/FD2-SampleDBs/commit/bc4037e752b1d29d266d3d63689421dc1d298d45)), closes [#560](https://github.com/FarmData2/FD2-SampleDBs/issues/560) [#562](https://github.com/FarmData2/FD2-SampleDBs/issues/562) [#563](https://github.com/FarmData2/FD2-SampleDBs/issues/563) [#563](https://github.com/FarmData2/FD2-SampleDBs/issues/563) [FarmData2/FarmData2#563](https://github.com/FarmData2/FarmData2/issues/563) [FarmData2/FarmData2#564](https://github.com/FarmData2/FarmData2/issues/564) [FarmData2/FarmData2#560](https://github.com/FarmData2/FarmData2/issues/560) [FarmData2/FarmData2#562](https://github.com/FarmData2/FarmData2/issues/562) [FarmData2/FarmData2#563](https://github.com/FarmData2/FarmData2/issues/563)
+
+
+### Fixes
+
+* **dev:** revises the process for installing dbs for testing before release ([#71](https://github.com/FarmData2/FD2-SampleDBs/issues/71)) ([e863665](https://github.com/FarmData2/FD2-SampleDBs/commit/e863665081cea3d58b8f024db991d2c6a11593c4)), closes [#634](https://github.com/FarmData2/FD2-SampleDBs/issues/634)
+
 ## [3.8.0](https://github.com/FarmData2/FD2-SampleDBs/compare/v3.7.1...v3.8.0) (2026-01-15)
 
 
