@@ -19,7 +19,7 @@ if [ ! -f "$REPO_DIR/dist/db.base.tar.gz" ]; then
 fi
 
 # Install the base database so we can build the sample database on top.
-"$HOME/FarmData2/bin/installDB.bash" --development --artifact db.base.tar.gz
+"$HOME/FarmData2/bin/installDB.bash" --development --asset=db.base.tar.gz
 error_check
 echo ""
 
