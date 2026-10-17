@@ -43,6 +43,9 @@ To change, modify, update, add a database:
    - This will require explicitly setting "GITHUB_TOKEN" to a token with permissions for both FarmData2 and FD2-SampleDBs.
    - e.g. `export GITHUB_TOKEN=ghp_TA2ax ... B2FV`
 14. Create a pull request to the `development` branch in the appropriate upstream for each of your feature branches.
+15. Wait for a Maintainer to merge your changes to FD2-SampleDBs and create a new release.
+16. In FarmData2, `installDB.bash --latest` to update to the new release.
+17. Commit changes to your FarmData2 feature branch and push.
 
 ## Building the Databases
 
